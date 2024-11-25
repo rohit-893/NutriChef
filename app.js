@@ -13,8 +13,6 @@ app.get('/recipe', (req,res) => {
     res.render('show.ejs')
 })
 
-app.post('')
-
 app.listen(3000, () => {
     console.log("Listening on Port 3000!")
 })
