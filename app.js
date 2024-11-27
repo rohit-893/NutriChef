@@ -21,17 +21,26 @@ app.get('/', (req, res) => {
 //     res.render('show.ejs');
 // })
 
-app.post('/', async (req, res) => {
-    const ingredient = req.body.ingredient;
-    const recipes = await Recipe.find({ TranslatedRecipeName: { $regex: ingredient, $options: 'i' } }).limit(50);
-    res.render('search.ejs', { recipes });
+app.get('/search', async (req, res) => {
+    const page = parseInt(req.query.page) || 1;  // Get the page number from the query parameter (default to 1)
+    const limit = 10;  // Number of recipes to show per page
+    const skip = (page - 1) * limit;  // Skip the previous pages' recipes
+    const ingredient = req.query.ingredient;
+    const recipes = await Recipe.find({ TranslatedRecipeName: { $regex: ingredient, $options: 'i' } }).skip(skip)
+        .limit(limit);
+
+    const totalRecipes = await Recipe.countDocuments();
+    // Calculate the total number of pages
+    const totalPages = Math.ceil(totalRecipes / limit);
+
+    res.render('search.ejs', { recipes, page, totalPages, ingredient });
 })
 
 app.get('/show/:id', async (req, res) => {
     const { id } = req.params;
     const recipe = await Recipe.findById(id);
-    console.log(recipe)
-    res.render('show.ejs', { recipe, id })
+    const referer = req.get('Referrer') || '/';  // Get the referrer URL, or fallback to home
+    res.render('show.ejs', { recipe, referer })
 })
 
 app.listen(3000, () => {

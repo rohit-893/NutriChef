@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div class="container my-4">
         <h1 class="mb-4">
             <%= recipe.TranslatedRecipeName %>
         </h1>
@@ -54,7 +54,8 @@
             </a></p>
 
 
-        <a href="/" class="btn btn-primary">Back to Home</a>
+            <a href="<%= referer %>" class="btn btn-primary">Back to Previous Page</a>
+            <a href="/" class="btn btn-primary">Back To Home</a>
     </div>
 
 

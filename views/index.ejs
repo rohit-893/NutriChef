@@ -10,17 +10,24 @@
 </head>
 
 <body>
-    
-    <h2>All Recepies</h2>
-    
-    <div class="input-group mb-3">
-        <form class="d-flex" action="/" method="POST">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <h2 class="text-center">Find Recipes by Ingredient</h2>
+            <form action="/search" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter ingredient" name="ingredient" required>
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <div class="input-group mb-3">
+        <form class="d-flex" action="/search" method="GET">
             <input type="search" class="form-control" placeholder="Ingredient Name" name="ingredient">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-    </div>
-
-    <a href="/recipe">Recipes</a>
+    </div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
