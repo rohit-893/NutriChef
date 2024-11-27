@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const Recipe = require('./models/recipe');
+const axios = require('axios'); // Import Axios
 
 mongoose.connect('mongodb://127.0.0.1:27017/mini-project')
     .then(() => console.log('Connected to MongoDB'))
@@ -39,7 +40,9 @@ app.get('/search', async (req, res) => {
 app.get('/show/:id', async (req, res) => {
     const { id } = req.params;
     const recipe = await Recipe.findById(id);
+
     const referer = req.get('Referrer') || '/';  // Get the referrer URL, or fallback to home
+
     res.render('show.ejs', { recipe, referer })
 })
 
