@@ -11,51 +11,22 @@
 
 <body>
     <div class="container my-4">
-        <h1 class="mb-4">
-            <%= recipe.TranslatedRecipeName %>
-        </h1>
+        <h3 class="post-title entry-title">
+            <%= recipe.title %>
+        </h3>
 
-        <p><strong>Cuisine:</strong>
-            <%= recipe.Cuisine || 'Not specified' %>
-        </p>
-        <p><strong>Course:</strong>
-            <%= recipe.Course || 'Not specified' %>
-        </p>
-        <p><strong>Diet:</strong>
-            <%= recipe.Diet || 'Not specified' %>
-        </p>
+        <img src="<%= recipe.image %>" alt="">
 
-        <h3>Ingredients</h3>
-        <p>
-            <%= recipe.TranslatedIngredients %>
-        </p>
+        <p><%- recipe.summary %></p>
 
-        <h3>Instructions</h3>
-        <p>
-            <%= recipe.TranslatedInstructions %>
-        </p>
+        <p><b>Ingredients</b></p>
+        <ul><% recipe.extendedIngredients.forEach(i =>{ %>
+            <li><%= i.name %></li>
+                <% }) %>
+        </ul>
 
-        <p><strong>Preparation Time:</strong>
-            <%= recipe.PrepTimeInMins %> mins
-        </p>
-        <p><strong>Cooking Time:</strong>
-            <%= recipe.CookTimeInMins %> mins
-        </p>
-        <p><strong>Total Time:</strong>
-            <%= recipe.TotalTimeInMins %> mins
-        </p>
-        <p><strong>Servings:</strong>
-            <%= recipe.Servings %>
-        </p>
-
-
-        <p><strong>Source:</strong> <a href="<%= recipe.URL %>" target="_blank">
-                <%= recipe.URL %>
-            </a></p>
-
-
-            <a href="<%= referer %>" class="btn btn-primary">Back to Previous Page</a>
-            <a href="/" class="btn btn-primary">Back To Home</a>
+    <a href="<%= referer %>" class="btn btn-primary">Back to Previous Page</a>
+    <a href="/" class="btn btn-primary">Back To Home</a>
     </div>
 
 
