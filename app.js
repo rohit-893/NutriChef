@@ -36,7 +36,7 @@ app.get('/show/:id', async (req, res) => {
     const { id } = req.params;
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&includeNutrition=false`);
     const recipe = response.data;
-    
+
 
     const referer = req.get('Referrer') || '/';  // Get the referrer URL, or fallback to home
 
