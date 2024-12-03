@@ -19,14 +19,18 @@
 
         <p><%- recipe.summary %></p>
 
-        <p><b>Ingredients</b></p>
-        <ul><% recipe.extendedIngredients.forEach(i =>{ %>
-            <li><%= i.name %></li>
+        <p><b>Ingredients for <%= servings %> servings:</b></p>
+        <ul>
+            <% adjustedIngredients.forEach(i=> { %>
+                <li>
+                    <%= Number.isInteger(i.adjustedAmount) ? i.adjustedAmount : i.adjustedAmount.toFixed(2) %>
+                        <%= i.unit %> of <%= i.name %>
+                </li>
                 <% }) %>
         </ul>
 
-    <a href="<%= referer %>" class="btn btn-primary">Back to Previous Page</a>
-    <a href="/" class="btn btn-primary">Back To Home</a>
+        <a href="<%= referer %>" class="btn btn-primary">Back to Previous Page</a>
+        <a href="/" class="btn btn-primary">Back To Home</a>
     </div>
 
 

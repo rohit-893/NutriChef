@@ -34,14 +34,28 @@ app.get('/search', async (req, res) => {
 
 app.get('/show/:id', async (req, res) => {
     const { id } = req.params;
-    const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&includeNutrition=false`);
-    const recipe = response.data;
-    
+    const desiredServings = parseInt(req.query.servings) || 4; // Get desired servings or default to 1
 
-    const referer = req.get('Referrer') || '/';  // Get the referrer URL, or fallback to home
+    try {
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&includeNutrition=false`);
+        const recipe = response.data;
 
-    res.render('show.ejs', { recipe, referer })
-})
+        // Adjust ingredient amounts based on desired servings
+        const originalServings = recipe.servings;
+        const adjustedIngredients = recipe.extendedIngredients.map(ingredient => {
+            const adjustedAmount = (ingredient.amount / originalServings) * desiredServings;
+            return { ...ingredient, adjustedAmount }; // Add the adjusted amount to the ingredient object
+        });
+
+        const referer = req.get('Referrer') || '/'; // Get the referrer URL, or fallback to home
+
+        // Pass the adjusted ingredients and desired servings to the template
+        res.render('show.ejs', { recipe, adjustedIngredients, referer, servings: desiredServings });
+    } catch (error) {
+        console.error('Error fetching recipe data:', error.message);
+        res.status(500).send("Something went wrong while fetching the recipe.");
+    }
+});
 
 app.listen(3000, () => {
     console.log("Listening on Port 3000!");
