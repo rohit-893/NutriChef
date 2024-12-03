@@ -31,7 +31,7 @@
                     <select name="servings" class="form-select d-inline-block" style="width: 70px"
                         onchange="this.form.submit()">
                         <!-- Generate the options dynamically from defaultServings to 12 -->
-                        <% for (let i=defaultServings; i <=12; i++) { %>
+                        <% for (let i=4; i <=12; i++) { %>
                             <option value="<%= i %>" <%=i===defaultServings ? 'selected' : '' %>><%= i %>
                             </option>
                             <% } %>
