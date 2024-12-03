@@ -25,7 +25,25 @@
             </div>
         </div>
 
-        <p><b>Ingredients for <%= servings %> servings:</b></p>
+        <p>
+            <b>Ingredients for
+                <form method="get" action="/show/<%= recipe.id %>" class="d-inline-block">
+                    <select name="servings" class="form-select d-inline-block" style="width: 70px"
+                        onchange="this.form.submit()">
+                        <!-- Generate the options dynamically from defaultServings to 12 -->
+                        <% for (let i=defaultServings; i <=12; i++) { %>
+                            <option value="<%= i %>" <%=i===defaultServings ? 'selected' : '' %>><%= i %>
+                            </option>
+                            <% } %>
+                    </select>
+                </form>
+                servings:
+            </b>
+        </p>
+
+
+
+
         <ul>
             <% adjustedIngredients.forEach(i=> { %>
                 <li>

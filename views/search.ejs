@@ -19,7 +19,8 @@
                     <ul class="list-group">
                         <% searchResults.forEach((recipe, index, array)=> { %>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="/show/<%= recipe.id %>" class="text-decoration-none">
+                                <a href="/show/<%= recipe.id %>?servings=<%= defaultServings %>"
+                                    class="text-decoration-none">
                                     <h5>
                                         <%= recipe.name %>
                                     </h5>
