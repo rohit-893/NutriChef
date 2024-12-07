@@ -1,62 +1,60 @@
-const express = require('express');
+const express = require("express");
+const axios = require("axios");
 const app = express();
-const path = require('path');
-const axios = require('axios'); // Import Axios
+const path = require("path");
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+const API_KEY = "c380b83969ff408698f2a690b3902130"; // Replace with your actual Spoonacular API key
 
-app.use(express.urlencoded({ extended: true }));
+// Middleware
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', (req, res) => {
-    res.render('index.ejs');
-})
+// Routes
 
-// app.get('/recipe', (req, res) => {
-//     res.render('show.ejs');
-// })
+// Home Route
+app.get("/", (req, res) => {
+    res.render("index", { recipes: null }); // Render search.ejs with no initial recipes
+});
 
-app.get('/search', async (req, res) => {
-    const page = parseInt(req.query.page) || 1;  // Get the page number from the query parameter (default to 1)
-    const limit = 10;  // Number of recipes to show per page
-    const ingredient = req.query.ingredient;
-    const response = await axios.get(`https://api.spoonacular.com/food/search?apiKey=c380b83969ff408698f2a690b3902130&query=${ingredient}&number=50`);
-    const recipes = response.data;
-    const searchResults = response.data.searchResults[0].results;
-
-
-    const totalRecipes = searchResults.length;
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(totalRecipes / limit);
-
-    res.render('search.ejs', { searchResults, page, totalPages, ingredient });
-})
-
-app.get('/show/:id', async (req, res) => {
-    const { id } = req.params;
-    const desiredServings = parseInt(req.query.servings) || 4; // Get desired servings or default to 1
+// Search Results Route
+app.get("/search-results", async (req, res) => {
+    const query = req.query.query;
 
     try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&includeNutrition=false`);
-        const recipe = response.data;
+        const response = await axios.get(
+            `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&apiKey=${API_KEY}&number=51`
+        );
 
-        // Adjust ingredient amounts based on desired servings
-        const originalServings = recipe.servings;
-        const adjustedIngredients = recipe.extendedIngredients.map(ingredient => {
-            const adjustedAmount = (ingredient.amount / originalServings) * desiredServings;
-            return { ...ingredient, adjustedAmount }; // Add the adjusted amount to the ingredient object
-        });
-
-        const referer = req.get('Referrer') || '/'; // Get the referrer URL, or fallback to home
-
-        // Pass the adjusted ingredients and desired servings to the template
-        res.render('show.ejs', { recipe, adjustedIngredients, referer, servings: desiredServings });
+        res.render("search", { recipes: response.data });
     } catch (error) {
-        console.error('Error fetching recipe data:', error.message);
-        res.status(500).send("Something went wrong while fetching the recipe.");
+        console.error(error.message);
+        res.render("search", { recipes: [] }); // Render with no results in case of error
     }
 });
 
-app.listen(3000, () => {
-    console.log("Listening on Port 3000!");
-})
+// Recipe Details Route
+app.get("/recipe/:id", async (req, res) => {
+    const recipeId = req.params.id;
+
+    try {
+        const recipeDetails = await axios.get(
+            `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`
+        );
+
+        const nutritionLabel = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel?apiKey=${API_KEY}`);
+        res.render("show", {
+            recipe: recipeDetails.data,
+            nutritionLabel: nutritionLabel.data,
+        });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Error retrieving recipe details");
+    }
+});
+
+// Server Setup
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
