@@ -43,9 +43,12 @@ app.get("/recipe/:id", async (req, res) => {
         );
 
         const nutritionLabel = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel?apiKey=${API_KEY}`);
+        const trivia = await axios.get("https://api.spoonacular.com/food/trivia/random");
+
         res.render("show", {
             recipe: recipeDetails.data,
             nutritionLabel: nutritionLabel.data,
+            trivia: trivia.data,
         });
     } catch (error) {
         console.error(error.message);

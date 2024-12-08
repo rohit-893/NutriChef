@@ -9,12 +9,6 @@
     <title>
         <%= recipe.title %> - Recipe Details
     </title>
-    <style>
-        .nutrition-label {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 
 <body>
@@ -63,8 +57,12 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h3><p class="text-center"></p>Nutrition Facts</p></h3>
-                <%- nutritionLabel %>
+                <div class="row">
+                    <%- nutritionLabel %>
+                </div>
+                <div>
+                    <%- trivia.text %>
+                </div>
             </div>
         </div>
 
