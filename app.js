@@ -39,13 +39,14 @@ app.get('/search', async (req, res) => {
     });
 })
 
-app.get('/show/:id', async (req, res) => {
+app.get('/show/:id?', async (req, res) => {
     const { id } = req.params;
     const desiredServings = parseInt(req.query.servings) || 4; // Get desired servings or default to 1
     const defaultServings = desiredServings;
     try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130`);
-
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&nutrition=false`);
+        const recipe = response.data;
+        console.log(recipe);
         // Adjust ingredient amounts based on desired servings
         const originalServings = recipe.servings;
         const ingredientMap = new Map();
@@ -73,7 +74,7 @@ app.get('/show/:id', async (req, res) => {
 
         // Pass the adjusted ingredients and desired servings to the template
         res.render('show', {
-            recipe : response.data,
+            recipe,
             adjustedIngredients,
             referer,
             defaultServings,
