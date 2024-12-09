@@ -23,7 +23,6 @@ app.get("/", (req, res) => {
 // Search Results Route
 app.get("/search-results", async (req, res) => {
     const query = req.query.query;
-
     try {
         const recipeDetails = await axios.get(
             `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${query}&apiKey=${API_KEY}&number=30&addRecipeNutrition=true`
@@ -110,3 +109,6 @@ function adjustIngredients(recipe, servings) {
 
 // Server Setup
 const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
