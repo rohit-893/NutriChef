@@ -29,11 +29,16 @@
                 <!-- Recipe Details -->
                 <div class="row my-4">
                     <div class="col-md-6">
-                        <p><strong>Servings:</strong>
-                            <%= recipe.servings %>
-                        </p>
+                        <form action="/recipe/<%= recipe.id %>" method="get">
+                            <p><strong>Servings:
+                                    <input type="number" name="servings" style="width: 70px"
+                                        value="<%= desiredServings%>">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </strong>
+                            </p>
+                        </form>
                         <p><strong>Ready in:</strong>
-                            <%= recipe.readyInMinutes %> minutes
+                            <%= scaledReadyInMinutes %> minutes
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -47,9 +52,10 @@
                     <div class="col">
                         <h3>Ingredients</h3>
                         <ul class="list-group">
-                            <% recipe.extendedIngredients.forEach(i=> { %>
+                            <% scaledIngredients.forEach(i=> { %>
                                 <li class="list-group-item">
-                                    <%= i.original %>
+                                    <%= i.scaledAmount.toFixed(1) %>
+                                        <%= i.unit %> - <%= i.originalName %>
                                 </li>
                                 <% }); %>
                         </ul>
