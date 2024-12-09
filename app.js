@@ -43,15 +43,8 @@ app.get('/show/:id?', async (req, res) => {
     const desiredServings = parseInt(req.query.servings) || 4; // Get desired servings or default to 1
     const defaultServings = desiredServings;
     try {
-<<<<<<< HEAD
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&nutrition=false`);
-        const recipe = response.data;
-        console.log(recipe);
-=======
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130&includeNutrition=false`);
-        const recipe = response.data;
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130`);
 
->>>>>>> parent of e59cabc (Merge branch 'api-implement' of https://github.com/rohit-893/mini-project into api-implement)
         // Adjust ingredient amounts based on desired servings
         const originalServings = recipe.servings;
         const ingredientMap = new Map();
@@ -76,12 +69,8 @@ app.get('/show/:id?', async (req, res) => {
         const referer = req.get('Referrer') || '/'; // Get the referrer URL, or fallback to home
 
         // Pass the adjusted ingredients and desired servings to the template
-<<<<<<< HEAD
         res.render('show', {
-=======
-        res.render('show.ejs', {
->>>>>>> parent of e59cabc (Merge branch 'api-implement' of https://github.com/rohit-893/mini-project into api-implement)
-            recipe,
+            recipe : response.data,
             adjustedIngredients,
             referer,
             defaultServings
