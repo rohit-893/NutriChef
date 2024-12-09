@@ -77,7 +77,7 @@ app.get('/show/:id', async (req, res) => {
             defaultServings
         });
     } catch (error) {
-        console.error('Error fetching recipe data:', error.message);
+        console.error('Error fetching recipe detail:', error.message);
         res.status(500).send("Something went wrong while fetching the recipe.");
     }
 });
