@@ -20,8 +20,7 @@ app.get('/search', async (req, res) => {
     const page = parseInt(req.query.page) || 1;  // Get the page number from the query parameter (default to 1)
     const limit = 10;  // Number of recipes to show per page
     const ingredient = req.query.ingredient;
-    const response = await axios.get(`https://api.spoonacular.com/food/search?apiKey=c380b83969ff408698f2a690b3902130&query=${ingredient}&number=50`);
-    const recipes = response.data;
+    const response = await axios.get(`https://api.spoonacular.com/food/search?apiKey=c380b83969ff408698f2a690b3902130&query=${ingredient}&number=10`);
     const searchResults = response.data.searchResults[0].results;
     const defaultServings = 4;
 
@@ -44,7 +43,7 @@ app.get('/show/:id?', async (req, res) => {
     const defaultServings = desiredServings;
     try {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=c380b83969ff408698f2a690b3902130`);
-
+        const recipe = response.data;
         // Adjust ingredient amounts based on desired servings
         const originalServings = recipe.servings;
         const ingredientMap = new Map();
@@ -70,7 +69,7 @@ app.get('/show/:id?', async (req, res) => {
 
         // Pass the adjusted ingredients and desired servings to the template
         res.render('show', {
-            recipe : response.data,
+            recipe,
             adjustedIngredients,
             referer,
             defaultServings
