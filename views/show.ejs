@@ -20,7 +20,8 @@
                 <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid my-4">
             </div>
             <div class="col-md-6 text-center">
-                <%- nutritionLabel %>
+                <img src="https://api.spoonacular.com/recipes/<%= recipe.id %>/nutritionLabel.png?apiKey=c380b83969ff408698f2a690b3902130"
+                    alt="Nutrition Label" class="img-fluid">
             </div>
         </div>
 
