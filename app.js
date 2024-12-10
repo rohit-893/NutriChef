@@ -62,13 +62,13 @@ app.get("/recipe/:id", async (req, res) => {
         console.log("Serving from cache");
         const cachedRecipe = cache[cacheKey];
         const scaledIngredients = adjustIngredients(cachedRecipe, req.query.servings);
-        const adjustedReadyTime = adjustReadyTime(cachedRecipe.readyInMinutes, req.query.servings);
+        const adjustedTime = adjustReadyTime(cachedRecipe.readyInMinutes, req.query.servings);
         return res.render("show", {
             recipe: cachedRecipe,
             nutritionLabel: cachedRecipe.nutritionLabel,
             desiredServings: req.query.servings || cachedRecipe.servings,
             scaledIngredients,
-            adjustedReadyTime,
+            adjustedTime,
         });
     }
 
@@ -102,7 +102,7 @@ app.get("/recipe/:id", async (req, res) => {
             nutritionLabel: nutritionData,
             desiredServings,
             scaledIngredients,
-            adjustedReadyTime,
+            adjustedTime,
         });
     } catch (error) {
         console.error(error.message);
