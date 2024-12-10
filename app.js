@@ -3,7 +3,7 @@ const axios = require("axios");
 const app = express();
 const path = require("path");
 
-const API_KEY = "c380b83969ff408698f2a690b3902130"; // Replace with your actual Spoonacular API key
+const API_KEY = "01ab36ef25eb40ce993f06e63ae4a30b"; // Replace with your actual Spoonacular API key
 
 // Simple in-memory cache (this can be further improved with a library like Redis for production)
 const cache = {};
@@ -25,7 +25,7 @@ app.get("/search-results", async (req, res) => {
     const { query, vegetarian, vegan, glutenFree, ketogenic, dairy, grain, peanut, seafood, soy, wheat } = req.query;
     try {
         let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}`;
-        
+
         if (vegetarian) apiUrl += '&diet=vegetarian';
         if (vegan) apiUrl += '&diet=vegan';
         if (glutenFree) apiUrl += '&diet=glutenFree';
