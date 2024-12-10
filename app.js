@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
 // Search Results Route
 app.get("/search-results", async (req, res) => {
-    const { query, vegetarian, vegan, glutenFree, ketogenic, dairy, gluten, peanut, seafood, soy, wheat } = req.query;
+    const { query, vegetarian, vegan, glutenFree, ketogenic, dairy, grain, peanut, seafood, soy, wheat } = req.query;
     try {
         let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}`;
         
