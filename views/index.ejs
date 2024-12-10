@@ -17,21 +17,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<!--form-text style-->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <style>
+        .form-text{
+            font-family:'Sarcamento',cursive ;
+            color: #000000;
+            font-weight: bold;
+            font-size: x-large;
+        }
         .slik-text {
-            font-family: 'Fredoka One'; /* Applying the food-related font style */
-            font-weight: bold; /* Making it bold */
+            font-family: 'Fredoka One',cursive; /* Applying the food-related font style */
+            font-weight: bolder; /* Making it bold */
             color: #000000;
         }
          .sim-text {
             font-family: 'Gloria Hallelujah'; /* Applying the food-related font style */
-            font-weight: bold; /* Making it bold */
+            font-weight: bolder; /* Making it bold */
             color: #ffffff;
         }
          .nav-text {
             font-family: 'Dancing Script'; /* Applying the food-related font style */
-            font-weight: bold; /* Making it bold */
+            font-weight: bolder; /* Making it bold */
             color: #ffffff;
         }
         /* Hero Section Styles */
@@ -45,7 +53,7 @@
             position: relative;
             width: 100%;
             height: 100vh; /* Full viewport height */
-            background-image: url('./bg.jpg');
+            background-image: url('https://img.freepik.com/premium-photo/healthy-eating-wallpaper_1134901-236725.jpg?w=1060');
             background-size: cover;
             background-position: center;
         }
@@ -108,7 +116,7 @@
             background-color: #00000000 !important; /* Make hamburger icon background white */
         }
     </style>
-    <title>Recipe Finder</title>
+    <title>NutriChef🍴</title>
 </head>
 
 <body>
@@ -154,12 +162,12 @@
 
         <form action="/search-results" method="GET">
             <div class="mb-3">
-                <h5>Enter Ingredient</h5>
+                <h5 class="form-text">Enter Ingredient</h5>
                 <input type="text" class="form-control" id="query" name="query" placeholder="e.g., Paneer" required>
             </div>
 
             <div class="mb-3">
-                <h5>Dietary Options</h5>
+                <h5 class="form-text" style="font-size: large;">Dietary Options</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="vegetarian" name="vegetarian" value="true">
                     <label class="form-check-label" for="vegetarian">Vegetarian (No ingredients may contain meat or meat by-products, such as bones or gelatin.)</label>
@@ -178,7 +186,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <h5>Intolerances Options</h5>
+                <h5 class="form-text" style="font-size: large;">Intolerances Options</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="dairy" name="dairy" value="true">
                     <label class="form-check-label" for="dairy">Dairy</label>
@@ -208,7 +216,75 @@
             <button type="submit" class="btn btn-custom">Search</button>
         </form>
     </div>
-
+    <!--footer-->
+    <footer>
+        <style>
+          footer {
+            padding: 16px;
+            background-color: black;
+            color: white;
+            text-align: center;
+          }
+      
+          footer p {
+            margin: 0;
+            font-size: 14px;
+          }
+      
+          footer .social-links {
+            margin-top: 8px;
+          }
+      
+          footer .social-links a {
+            margin: 0 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+          }
+      
+          footer .social-links a:hover {
+            color: #f9ac06; /* Highlight color on hover */
+          }
+      
+          footer .social-links i {
+            margin-right: 8px;
+          }
+      
+          footer .email {
+            margin-top: 8px;
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+          }
+      
+          footer .email:hover {
+            color: #f9ac06; /* Highlight color on hover */
+          }
+        </style>
+      
+        <p>© 2024 NutriChef | All Rights Reserved</p>
+        <div class="social-links">
+          <a href="#" target="_blank">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-twitter"></i> Twitter
+          </a>
+        </div>
+        <a href="mailto:preetham92.official@gmail.com" class="email">
+          <i class="fas fa-envelope"></i>NutriChef🍴
+        </a>
+      
+        
+      </footer>
+    <!-- Include Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>  
     <script>
         function scrollToSearch() {
             const element = document.getElementById("ingredient-search");
