@@ -22,11 +22,28 @@ app.get("/", (req, res) => {
 
 // Search Results Route
 app.get("/search-results", async (req, res) => {
-    const query = req.query.query;
+    const { query, vegetarian, vegan, glutenFree, ketogenic, dairy, gluten, peanut, seafood, soy, wheat } = req.query;
     try {
-        const recipeDetails = await axios.get(
-            `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${query}&apiKey=${API_KEY}&number=30&addRecipeNutrition=true`
-        );
+        let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}`;
+        
+        if (vegetarian) apiUrl += '&diet=vegetarian';
+        if (vegan) apiUrl += '&diet=vegan';
+        if (glutenFree) apiUrl += '&diet=glutenFree';
+        if (ketogenic) apiUrl += '&diet=ketogenic';
+
+        const intolerances = [];
+        if (dairy) intolerances.push('dairy');
+        if (grain) intolerances.push('grain');
+        if (peanut) intolerances.push('peanut');
+        if (seafood) intolerances.push('seafood');
+        if (soy) intolerances.push('soy');
+        if (wheat) intolerances.push('wheat');
+        if (intolerances.length > 0) {
+            apiUrl += `&intolerances=${intolerances.join(',')}`;
+        }
+
+        const recipeDetails = await axios.get(apiUrl);
+
         let defaultServings = 4;
         res.render("search", { recipes: recipeDetails.data.results, defaultServings });
     } catch (error) {
