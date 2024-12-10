@@ -102,7 +102,7 @@ app.get("/recipe/:id", async (req, res) => {
             nutritionLabel: nutritionData,
             desiredServings,
             scaledIngredients,
-            adjustedTime,
+            adjustedReadyTime,
         });
     } catch (error) {
         console.error(error.message);
