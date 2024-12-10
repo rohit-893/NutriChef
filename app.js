@@ -62,14 +62,13 @@ app.get("/recipe/:id", async (req, res) => {
         console.log("Serving from cache");
         const cachedRecipe = cache[cacheKey];
         const scaledIngredients = adjustIngredients(cachedRecipe, req.query.servings);
-        const scaledReadyInMinutes = (cachedRecipe.readyInMinutes / cachedRecipe.servings) * parseInt(req.query.servings || cachedRecipe.servings);
-
+        const adjustedReadyTime = adjustReadyTime(cachedRecipe.readyInMinutes, req.query.servings);
         return res.render("show", {
             recipe: cachedRecipe,
             nutritionLabel: cachedRecipe.nutritionLabel,
             desiredServings: req.query.servings || cachedRecipe.servings,
             scaledIngredients,
-            scaledReadyInMinutes: Math.round(scaledReadyInMinutes),
+            adjustedReadyTime,
         });
     }
 
@@ -93,18 +92,17 @@ app.get("/recipe/:id", async (req, res) => {
             return ingredient;
         });
 
-        // Scale the "Ready in" time based on the servings
-        const scaledReadyInMinutes = (recipe.readyInMinutes / defaultServings) * desiredServings;
-
         // Cache the fetched recipe data (for 5 minutes)
         cache[cacheKey] = { ...recipe, nutritionLabel: nutritionData };
 
+        const adjustedTime = adjustReadyTime(recipe.readyInMinutes, desiredServings);
+
         res.render("show", {
-            recipe: recipeDetails.data,
+            recipe,
             nutritionLabel: nutritionData,
-            desiredServings: desiredServings,
-            scaledIngredients: scaledIngredients,
-            scaledReadyInMinutes: Math.round(scaledReadyInMinutes),
+            desiredServings,
+            scaledIngredients,
+            adjustedTime,
         });
     } catch (error) {
         console.error(error.message);
@@ -122,6 +120,17 @@ function adjustIngredients(recipe, servings) {
         ingredient.scaledAmount = scaledAmount;
         return ingredient;
     });
+}
+
+// Helper function to adjust preparation time
+function adjustReadyTime(readyInMinutes, servings) {
+    const servingsCount = parseInt(servings);
+    if (servingsCount > 20) {
+        return readyInMinutes * 3; // Triple time if servings > 20
+    } else if (servingsCount > 10) {
+        return readyInMinutes * 2; // Double time if servings > 10
+    }
+    return readyInMinutes; // Default time otherwise
 }
 
 // Server Setup
