@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 app.get("/search-results", async (req, res) => {
     const { query, vegetarian, vegan, glutenFree, ketogenic, dairy, grain, peanut, seafood, soy, wheat } = req.query;
     try {
-        let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&number=51`;
+        let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&number=80`; // Add &number=80 for at least 50 results
 
         if (vegetarian) apiUrl += '&diet=vegetarian';
         if (vegan) apiUrl += '&diet=vegan';
@@ -44,8 +44,9 @@ app.get("/search-results", async (req, res) => {
 
         const recipeDetails = await axios.get(apiUrl);
 
-        let defaultServings = 4;
-        res.render("search", { recipes: recipeDetails.data.results, defaultServings, query });
+        let defaultServings = 2;
+        res.render("search", { recipes: recipeDetails.data.results, defaultServings });
+        
     } catch (error) {
         console.error(error.message);
         res.render("search", { recipes: [], defaultServings }); // Render with no results in case of error
