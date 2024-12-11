@@ -154,7 +154,7 @@
         </div>
 
         <!-- Recipe Image and Nutrition Label -->
-        <div class="row">
+        <div class="row" style="height: 500px; margin-bottom: 50px;">
             <div class="col-lg-6">
                 <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid rounded shadow">
                 <!-- Recipe Details -->
@@ -180,20 +180,17 @@
 
 
             </div>
-            <div class="col-lg-3">
-                <div class="row fixex-height">
+            <div class="col-lg-6 row" >
+                <div class="col fiex-height">
                     <div class="scale-content">
                         <%- nutritionLabel %>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 18rem;">
+                <div class="card flex-height " style="width: 18rem; height: 486px;">
                     <img src="https://t3.ftcdn.net/jpg/03/84/78/68/240_F_384786816_5Kj5OPcOZGOwyXLogY9zzS1QzyFMs4so.jpg"
                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                    <div class="col card-body">
+                        <p class="card-text"><%= trivia %></p>
                     </div>
                 </div>
             </div>
