@@ -112,30 +112,30 @@ link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/a
         </div>
     </div>
 
-    <!-- Recipe Image and Nutrition Label -->
-    <div class="row">
-        <div class="col-md-6">
-            <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid rounded shadow">
-            <!-- Recipe Details -->
-            <div class="row my-4">
-                <div class="col-md-6">
-                    <form action="/recipe/<%= recipe.id %>" method="get">
-                        <p><strong>Servings:
-                                <input type="number" name="servings" style="width: 70px"
-                                    value="<%= desiredServings%>">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </strong>
+        <!-- Recipe Image and Nutrition Label -->
+        <div class="row">
+            <div class="col-md-6">
+                <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid rounded shadow">
+                <!-- Recipe Details -->
+                <div class="row my-4">
+                    <div class="col-md-6">
+                        <form action="/recipe/<%= recipe.id %>" method="get">
+                            <p><strong>Servings:
+                                    <input type="number" name="servings" style="width: 70px"
+                                        value="<%= desiredServings%>">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </strong>
+                            </p>
+                        </form>
+                        <p><strong>Ready in:</strong>
+                            <%= scaledReadyInMinutes %> minutes
                         </p>
-                    </form>
-                    <p><strong>Ready in:</strong>
-                        <%= scaledReadyInMinutes %> minutes
-                    </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Source:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank">View Original
+                                Recipe</a></p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <p><strong>Source:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank">View Original
-                            Recipe</a></p>
-                </div>
-            </div>
 
             <!-- Ingredients -->
             <div class="row my-4">
