@@ -44,9 +44,9 @@ app.get("/search-results", async (req, res) => {
 
         const recipeDetails = await axios.get(apiUrl);
 
-        let defaultServings = 2;
+        let defaultServings = 4;
         res.render("search", { recipes: recipeDetails.data.results, defaultServings });
-        
+
     } catch (error) {
         console.error(error.message);
         res.render("search", { recipes: [], defaultServings }); // Render with no results in case of error
@@ -66,7 +66,7 @@ app.get("/recipe/:id", async (req, res) => {
         return res.render("show", {
             recipe: cachedRecipe,
             nutritionLabel: cachedRecipe.nutritionLabel,
-            trivia : cachedRecipe.trivia,
+            trivia: cachedRecipe.trivia,
             desiredServings: req.query.servings || cachedRecipe.servings,
             scaledIngredients,
         });
@@ -95,14 +95,14 @@ app.get("/recipe/:id", async (req, res) => {
         });
 
         // Cache the fetched recipe data (for 5 minutes)
-        cache[cacheKey] = { ...recipe, nutritionLabel: nutritionData };
+        cache[cacheKey] = { ...recipe, nutritionLabel: nutritionData, trivia: triviaText };
 
         res.render("show", {
             recipe,
             nutritionLabel: nutritionData,
             desiredServings,
             scaledIngredients,
-            trivia : triviaText,
+            trivia: triviaText,
         });
     } catch (error) {
         console.error(error.message);

@@ -147,14 +147,14 @@
         <!-- Recipe Title -->
         <div class="row">
             <div class="col text-center">
-                <h1 class="form-text mb-4">
+                <h1 class="mb-4">
                     <%= recipe.title %>
                 </h1>
             </div>
         </div>
 
         <!-- Recipe Image and Nutrition Label -->
-        <div class="row" style="height: 500px; margin-bottom: 50px;">
+        <div class="row" style="height: 550px;">
             <div class="col-lg-6">
                 <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid rounded shadow">
                 <!-- Recipe Details -->
@@ -162,7 +162,7 @@
                     <div class="col-md-6">
                         <form action="/recipe/<%= recipe.id %>" method="get">
                             <p><strong>Servings:
-                                    <input type="number" name="servings" style="width: 70px"
+                                    <input type="number" name="servings" min="1" max="25" style="width: 70px"
                                         value="<%= desiredServings%>">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </strong>
@@ -180,17 +180,21 @@
 
 
             </div>
-            <div class="col-lg-6 row" >
-                <div class="col fiex-height">
+            <div class="col-lg-3">
+                <div class="row fixex-height">
                     <div class="scale-content">
                         <%- nutritionLabel %>
                     </div>
                 </div>
-                <div class="card flex-height " style="width: 18rem; height: 486px;">
+            </div>
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
                     <img src="https://t3.ftcdn.net/jpg/03/84/78/68/240_F_384786816_5Kj5OPcOZGOwyXLogY9zzS1QzyFMs4so.jpg"
                         class="card-img-top" alt="...">
-                    <div class="col card-body">
-                        <p class="card-text"><%= trivia %></p>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <%= trivia %>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -224,8 +228,7 @@
         <!-- Back Buttons -->
         <div class="row mt-4">
             <div class="col text-center">
-                <a href="/" class="btn btn-primary mx-2">Back to Home</a>
-                <a href="javascript:history.back()" class="btn btn-secondary mx-2">Back to Search</a>
+                <a href="javascript:history.back()" class="btn btn-primary mx-2">Back to Search</a>
             </div>
         </div>
     </div>
