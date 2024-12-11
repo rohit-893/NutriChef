@@ -113,6 +113,278 @@
             transform-origin: top left;
             /* Ensure scaling is from the top left corner */
         }
+        /*------------*/
+/* Modern Design Enhancements */
+/* Recipe Detail Page Design Enhancements */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --background-color: #f4f6f7;
+    --transition-speed: 0.3s;
+}
+
+/* Recipe Title Styling */
+h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    position: relative;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    
+}
+
+/* Recipe Image Enhanced */
+.recipe-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: box-shadow var(--transition-speed) ease;
+}
+
+.recipe-image-container:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.recipe-image-container img {
+    transition: transform var(--transition-speed) ease;
+}
+
+.recipe-image-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Recipe Details Styling */
+.recipe-card {
+    border: none;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all var(--transition-speed) ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+/* Servings Form */
+form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all var(--transition-speed) ease;
+}
+
+
+
+/* Nutrition Label */
+.nutrition-label-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transition: all var(--transition-speed) ease;
+}
+
+.nutrition-label-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Ingredients Section */
+.ingredient-section, .instruction-section {
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: all var(--transition-speed) ease;
+}
+
+.ingredient-item {
+    align-items: center;
+    text-align: left;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all var(--transition-speed) ease;
+}
+
+.ingredient-item:hover {
+    background-color: #f0f0f0;
+    transform: translateX(10px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+/* Subtle Animations */
+@keyframes subtleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.recipe-card, .nutrition-label-container {
+    animation: subtleFloat 3s ease-in-out infinite;
+}
+
+.btn-custom {
+            background-color: #f9ac06 !important;
+            /* Set the background color to orange */
+            color: #fff !important;
+            /* Set the text color to white */
+            border-radius: 25px !important;
+            /* Make the button rounded */
+            padding: 10px 30px !important;
+            /* Adjust padding for better size */
+            font-size: 16px !important;
+            /* Adjust font size */
+        }
+
+        /* Optional: Hover effect for button */
+        .btn-custom:hover {
+            background-color: #ff8800 !important;
+            /* Darker orange on hover */
+            color: #fff !important;
+        }
+
+        .update-custom {
+            background-color: #f9ac06 !important;
+            /* Set the background color to orange */
+            color: #fff !important;
+            /* Set the text color to white */
+            border-radius: 25px !important;
+            /* Make the button rounded */
+            padding: 4px 15px !important;
+            /* Adjust padding for better size */
+            font-size: 14px !important;
+            /* Adjust font size */
+        }
+
+        /* Optional: Hover effect for button */
+        .update-custom:hover {
+            background-color: #ff8800 !important;
+            /* Darker orange on hover */
+            color: #fff !important;
+        }
+        /*for responsive*/
+        /* Existing CSS remains the same, adding these responsive adjustments */
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .recipe-section, 
+    .nutrition-section, 
+    .ingredient-section, 
+    .instruction-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .recipe-image-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .col-lg-7, 
+    .col-lg-4, 
+    .col-lg-6 {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .recipe-card, 
+    .nutrition-label-container {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .recipe-section, 
+    .nutrition-section {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 200% !important;
+    }
+
+    .form-text {
+        font-size: 180% !important;
+    }
+
+    .ingredient-item, 
+    .list-group-item {
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .btn-custom, 
+    .update-custom {
+        padding: 8px 20px !important;
+        font-size: 14px !important;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    form input, 
+    form button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+/* Flexbox improvements for smaller screens */
+@media (max-width: 992px) {
+    .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+
+    .col-md-6 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
     </style>
 </head>
 
@@ -143,119 +415,110 @@
             </div>
         </div>
     </nav>
-    <div class="container my-4">
+    <div class="container-fluid my-4">
         <!-- Recipe Title -->
         <div class="row">
             <div class="col text-center">
-                <h1 class="mb-4">
+                <h1 class="mb-4 form-text" style="font-size:270%;">
                     <%= recipe.title %>
                 </h1>
             </div>
         </div>
-
+    </div>
+    <div class="container-fluid mx-auto">
         <!-- Recipe Image and Nutrition Label -->
-        <div class="row gap-adjust">
-            <div class="col-lg-6">
-                <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid rounded shadow">
+<div class="row align-items-start ">
+    <!-- Recipe Image and Details -->
+    <div class="col-lg-7 recipe-section">
+        <div class="recipe-card border border-dark rounded overflow-hidden">
+            <div class="recipe-image-container position-relative">
+                <img 
+                    src="<%= recipe.image %>" 
+                    alt="<%= recipe.title %>" 
+                    class="img-fluid w-100"
+                >
+            </div>
+            <div class="p-4">
                 <!-- Recipe Details -->
-                <div class="row my-4">
+                <div class="row align-items-center">
                     <div class="col-md-6">
-                        <form action="/recipe/<%= recipe.id %>" method="get">
-                            <p><strong>Servings:
-                                    <input type="number" name="servings" min="1" max="25" style="width: 70px"
-                                        value="<%= desiredServings%>">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </strong>
-                            </p>
+                        <form action="/recipe/<%= recipe.id %>" method="get" class="d-flex align-items-center">
+                            <label for="servings" class="me-2"><strong>Servings:</strong></label>
+                            <input 
+                                type="number" 
+                                name="servings" 
+                                id="servings"
+                                min="1" 
+                                max="25" 
+                                class="form-control form-control-sm me-2" 
+                                style="border-radius: 10px;" 
+                                value="<%= desiredServings %>"
+                            >
+                            <button type="submit" class="update-custom" style="border-radius:20px; ">Update</button>
                         </form>
-                        <p><strong>Ready in:</strong>
-                            <%= recipe.readyInMinutes %> minutes
-                        </p>
+                        <p class="mt-3"><strong>Ready in:</strong> <%= recipe.readyInMinutes %> minutes</p>
                     </div>
-                    <div class="col-md-6">
-                        <p><strong>Source:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank">View Original
-                                Recipe</a></p>
+                    <div class="col-md-6 text-md-end">
+                        <p><strong>Source:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank" class="text-decoration-none">View Original Recipe</a></p>
                     </div>
                 </div>
-
-
-            </div>
-            <div class="col-lg-3">
-                <div class="row fixex-height">
-                    <div class="scale-content">
-                        <%- nutritionLabel %>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="https://t3.ftcdn.net/jpg/03/84/78/68/240_F_384786816_5Kj5OPcOZGOwyXLogY9zzS1QzyFMs4so.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <%= trivia %>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- Ingredients and Instructions -->
-        <div class="row gap-adjust">
-            <!-- Ingredients -->
-            <div class="col-lg-6">
-                <h3>Ingredients</h3>
-                <ul class="list-group">
-                    <% scaledIngredients.forEach(i=> { %>
-                        <li class="list-group-item">
-                            <%= i.scaledAmount.toFixed(1) %>
-                                <%= i.unit %> - <%= i.originalName %>
-                        </li>
-                        <% }); %>
-                </ul>
-            </div>
-            <!-- Instructions -->
-            <div class="col-lg-6">
-                <h3>Instructions</h3>
-                <p>
-                    <%- recipe.instructions %>
-                </p>
-            </div>
-        </div>
-
-        <!-- Back Buttons -->
-        <div class="row mt-4">
-            <div class="col text-center">
-                <a href="javascript:history.back()" class="btn btn-primary mx-2">Back to Search</a>
             </div>
         </div>
     </div>
 
+    <!-- Nutrition Label -->
+    <div class="col-lg-4 nutrition-section">
+        <div class="nutrition-label-container border border-dark rounded p-4 bg-light">
+            <div class="nutrition-label">
+                <%- nutritionLabel %>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- Include Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script>
-        function scrollToSearch() {
-            const element = document.getElementById("ingredient-search");
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
 
-</html>
+    <!-- Ingredients and Instructions -->
+    <div class="row mx-0">
+    <!-- Ingredients -->
+    <div class="col-lg-6 ingredient-section mt-4">
+        <h3 class="form-text" style="text-align: center; font-size: 190%;">Ingredients</h3>
+        <ul class="list-group">
+            <% scaledIngredients.forEach(i=> { %>
+                <li class="list-group-item ingredient-item">
+                    <%= i.scaledAmount.toFixed(1) %>
+                    <%= i.unit %> - <%= i.originalName %>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <!-- Instructions -->
+    <div class="col-lg-6 instruction-section mt-4">
+        <h3 class="form-text" style="text-align: center; font-size: 190%;">Instructions</h3>
+        <p>
+            <%- recipe.instructions %>
+        </p>
+    </div>
+</div>
+</div>
 
-<footer>
+
+        <!-- Back Buttons -->
+         
+        <div class="container-fluid row mt-4">
+            <div class="col text-center">
+                <a href="javascript:history.back()"><button class="btn-custom mb-4" type="submit">Back to Search</button></a>
+            
+            </div>
+        </div>
+    
+
+    <!--footer-->
+<footer class="sticky-bottom">
     <style>
+       
         footer {
-            padding: 5px;
+            padding: 16px;
             background-color: black;
             color: white;
             text-align: center;
@@ -263,18 +526,19 @@
 
         footer p {
             margin: 0;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         footer .social-links {
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
         footer .social-links a {
+            margin: 0 12px;
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 15px;
+            font-size: 18px;
             transition: color 0.3s ease;
         }
 
@@ -319,3 +583,55 @@
 
 
 </footer>
+
+    <!-- Include Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function scrollToSearch() {
+            const element = document.getElementById("ingredient-search");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
+    <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    // Ingredient Hover Effects
+    const ingredientItems = document.querySelectorAll('.ingredient-item');
+    ingredientItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.backgroundColor = '#f0f0f0';
+            item.style.transform = 'translateX(10px)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.backgroundColor = '#f9f9f9';
+            item.style.transform = 'translateX(0)';
+        });
+    });
+
+   
+
+    // Ingredient List Animation
+    const ingredientObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    ingredientItems.forEach(item => {
+        ingredientObserver.observe(item);
+    });
+});
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
