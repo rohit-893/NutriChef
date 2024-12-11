@@ -3,7 +3,7 @@ const axios = require("axios");
 const app = express();
 const path = require("path");
 
-const API_KEY = "928bbe78556741c89c46967b85e5ee17"; // Replace with your actual Spoonacular API key
+const API_KEY = "516e8fb5ebf54b2db0a0cd4d26839ef3"; // Replace with your actual Spoonacular API key
 
 // Simple in-memory cache (this can be further improved with a library like Redis for production)
 const cache = {};
@@ -46,6 +46,8 @@ app.get("/search-results", async (req, res) => {
 
         let defaultServings = 2;
         res.render("search", { recipes: recipeDetails.data.results, defaultServings });
+        let defaultServings = 4;
+        res.render("search", { recipes: recipeDetails.data.results, defaultServings, query });
     } catch (error) {
         console.error(error.message);
         res.render("search", { recipes: [], defaultServings }); // Render with no results in case of error

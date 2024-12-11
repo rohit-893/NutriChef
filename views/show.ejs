@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!--/*font style*/-->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
@@ -19,119 +18,113 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <!--form-text style-->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
+    <title>
+        <%= recipe.title %> - Recipe Details
+    </title>
     <style>
+        .card {
+            border: 1px solid black;
+        }
+
+        .card-img-top {
+            border-bottom: 1px solid black;
+        }
+
         .form-text {
-            font-family: 'Sarcamento',cursive;
+            font-family: 'Sarcamento', cursive;
             color: #000000;
             font-weight: bold;
             font-size: x-large;
         }
 
         .slik-text {
-            font-family: 'Fredoka One',cursive; /* Applying the food-related font style */
-            font-weight: bolder; /* Making it bold */
+            font-family: 'Fredoka One', cursive;
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
             color: #000000;
         }
 
         .sim-text {
-            font-family: 'Gloria Hallelujah'; /* Applying the food-related font style */
-            font-weight: bolder; /* Making it bold */
+            font-family: 'Gloria Hallelujah';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
             color: #ffffff;
         }
 
         .nav-text {
-            font-family: 'Dancing Script'; /* Applying the food-related font style */
-            font-weight: bolder; /* Making it bold */
-            color: #ffffff;
-        }
-        /* Hero Section Styles */
-        .hero-text {
-            font-family: 'Amatic SC', cursive; /* Applying the food-related font style */
-            font-size: 4rem; /* Adjusting font size */
-            font-weight: bold; /* Making it bold */
+            font-family: 'Dancing Script';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
             color: #ffffff;
         }
 
-        .hero-section {
-            position: relative;
-            width: 100%;
-            height: 100vh; /* Full viewport height */
-            background-image: url('https://img.freepik.com/premium-photo/healthy-eating-wallpaper_1134901-236725.jpg?w=1060');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-        }
-
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-        }
-
-            .hero-content h1 {
-                font-size: 3rem;
-                font-weight: bold;
-            }
-
-        .btn-custom {
-            background-color: #f9ac06 !important; /* Set the background color to orange */
-            color: #fff !important; /* Set the text color to white */
-            border-radius: 25px !important; /* Make the button rounded */
-            padding: 10px 30px !important; /* Adjust padding for better size */
-            font-size: 16px !important; /* Adjust font size */
-        }
-
-            /* Optional: Hover effect for button */
-            .btn-custom:hover {
-                background-color: #ff8800 !important; /* Darker orange on hover */
-                color: #fff !important;
-            }
-
-        /* Custom Navbar Styles */
         .navbar-custom {
-            background-color: #000000 !important; /* Ensure background is black */
+            background-color: #000000 !important;
+            /* Ensure background is black */
         }
 
-            .navbar-custom .navbar-nav .nav-link {
-                color: #ffffff !important; /* Ensure text is white */
-            }
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff !important;
+            /* Ensure text is white */
+        }
 
-            .navbar-custom .navbar-brand {
-                color: #ffffff !important; /* Ensure brand text is white */
-            }
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            /* Ensure brand text is white */
+        }
 
         .navbar-toggler {
-            border-color: #000000 !important; /* Make hamburger icon border white */
+            border-color: #000000 !important;
+            /* Make hamburger icon border white */
         }
 
         .navbar-toggler-icon {
-            background-color: #00000000 !important; /* Make hamburger icon background white */
+            background-color: #00000000 !important;
+            /* Make hamburger icon background white */
+        }
+
+        .nav-text {
+            font-family: 'Dancing Script';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #ffffff;
+        }
+
+        .fixed-height {
+            max-height: 200px;
+            /* Set the desired maximum height */
+            overflow: hidden;
+            /* Hide overflow to prevent scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .scale-content {
+            width: 150%;
+            /* Increase width to 120% of its original size */
+            transform: scale(0.72);
+            /* Scale down the content */
+            transform-origin: top left;
+            /* Ensure scaling is from the top left corner */
         }
     </style>
-    <title>NutriChef🍴</title>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom py-3">
+    <nav class="navbar navbar-expand-lg navbar-custom py-2 sticky-top">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class=" nav-text navbar-brand fw-bold fs-3" href="#">NutriChef🍴</a>
+            <a class=" nav-text navbar-brand fw-bold fs-3" href="/">NutriChef🍴</a>
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span><i class="fas fa-hamburger">🍔</i></span>
             </button>
             <!-- Collapsible content -->
@@ -144,17 +137,13 @@
                         <a class="sim-text nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="sim-text nav-link" onclick="scrollToFooter()">Contact</a>
+                        <a class="sim-text nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
-
-
-    <div class="container my-5">
+    <div class="container my-4">
         <!-- Recipe Title -->
         <div class="row">
             <div class="col text-center">
@@ -166,63 +155,68 @@
 
         <!-- Recipe Image and Nutrition Label -->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="img-fluid rounded shadow">
                 <!-- Recipe Details -->
                 <div class="row my-4">
                     <div class="col-md-6">
                         <form action="/recipe/<%= recipe.id %>" method="get">
-                            <p>
-                                <strong>
-                                    Servings:
+                            <p><strong>Servings:
                                     <input type="number" name="servings" style="width: 70px"
-                                           value="<%= desiredServings%>">
+                                        value="<%= desiredServings%>">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </strong>
                             </p>
                         </form>
-                        <p>
-                            <strong>Ready in:</strong>
+                        <p><strong>Ready in:</strong>
                             <%= recipe.readyInMinutes %> minutes
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
-                            <strong>Source:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank">
-                                View Original
-                                Recipe
-                            </a>
-                        </p>
+                        <p><strong>Source:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank">View Original
+                                Recipe</a></p>
                     </div>
                 </div>
 
-                <!-- Ingredients -->
-                <div class="row my-4">
-                    <div class="col">
-                        <h3>Ingredients</h3>
-                        <ul class="list-group">
-                            <% scaledIngredients.forEach(i=> { %>
-                            <li class="list-group-item">
-                                <%= i.scaledAmount.toFixed(1) %>
-                                <%= i.unit %> - <%= i.originalName %>
-                            </li>
-                            <% }); %>
-                        </ul>
+
+            </div>
+            <div class="col-lg-3">
+                <div class="row fixex-height">
+                    <div class="scale-content">
+                        <%- nutritionLabel %>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <%- nutritionLabel %>
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://t3.ftcdn.net/jpg/03/84/78/68/240_F_384786816_5Kj5OPcOZGOwyXLogY9zzS1QzyFMs4so.jpg"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
 
 
-        <!-- Instructions -->
-        <div class="row my-4">
-            <div class="col">
+        <!-- Ingredients and Instructions -->
+        <div class="row">
+            <!-- Ingredients -->
+            <div class="col-lg-6">
+                <h3>Ingredients</h3>
+                <ul class="list-group">
+                    <% scaledIngredients.forEach(i=> { %>
+                        <li class="list-group-item">
+                            <%= i.scaledAmount.toFixed(1) %>
+                                <%= i.unit %> - <%= i.originalName %>
+                        </li>
+                        <% }); %>
+                </ul>
+            </div>
+            <!-- Instructions -->
+            <div class="col-lg-6">
                 <h3>Instructions</h3>
                 <p>
                     <%- recipe.instructions %>
@@ -231,7 +225,7 @@
         </div>
 
         <!-- Back Buttons -->
-        <div class="row">
+        <div class="row mt-4">
             <div class="col text-center">
                 <a href="/" class="btn btn-primary mx-2">Back to Home</a>
                 <a href="javascript:history.back()" class="btn btn-secondary mx-2">Back to Search</a>
@@ -240,93 +234,6 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--footer-->
-    <footer id="1">
-        <style>
-            footer {
-                padding: 16px;
-                background-color: black;
-                color: white;
-                text-align: center;
-            }
-
-                footer p {
-                    margin: 0;
-                    font-size: 14px;
-                }
-
-                footer .social-links {
-                    margin-top: 8px;
-                }
-
-                    footer .social-links a {
-                        margin: 0 12px;
-                        color: white;
-                        text-decoration: none;
-                        font-weight: bold;
-                        font-size: 18px;
-                        transition: color 0.3s ease;
-                    }
-
-                        footer .social-links a:hover {
-                            color: #f9ac06; /* Highlight color on hover */
-                        }
-
-                    footer .social-links i {
-                        margin-right: 8px;
-                    }
-
-                footer .email {
-                    margin-top: 8px;
-                    display: block;
-                    color: white;
-                    text-decoration: none;
-                    font-size: 14px;
-                }
-
-                    footer .email:hover {
-                        color: #f9ac06; /* Highlight color on hover */
-                    }
-        </style>
-
-        <p>© 2024 NutriChef | All Rights Reserved</p>
-        <div class="social-links">
-            <a href="#" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
-            <a href="#" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="#" target="_blank">
-                <i class="fab fa-twitter"></i> Twitter
-            </a>
-        </div>
-        <a href="mailto:preetham92.official@gmail.com" class="email">
-            <i class="fas fa-envelope"></i>NutriChef🍴
-        </a>
-
-
-    </footer>
     <!-- Include Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
@@ -336,17 +243,79 @@
                 element.scrollIntoView({ behavior: "smooth" });
             }
         }
-        function scrollToFooter() {
-            const element = document.getElementById("1");
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
-        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+<footer>
+    <style>
+        footer {
+            padding: 5px;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        footer .social-links {
+            margin-top: 5px;
+        }
+
+        footer .social-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #f9ac06;
+            /* Highlight color on hover */
+        }
+
+        footer .social-links i {
+            margin-right: 8px;
+        }
+
+        footer .email {
+            margin-top: 8px;
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        footer .email:hover {
+            color: #f9ac06;
+            /* Highlight color on hover */
+        }
+    </style>
+
+    <p>© 2024 NutriChef | All Rights Reserved</p>
+    <div class="social-links">
+        <a href="#" target="_blank">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="#" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="#" target="_blank">
+            <i class="fab fa-twitter"></i> Twitter
+        </a>
+    </div>
+    <a href="mailto:preetham92.official@gmail.com" class="email">
+        <i class="fas fa-envelope"></i>NutriChef🍴
+    </a>
+
+
+</footer>
