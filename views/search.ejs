@@ -23,6 +23,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <title>NutriChef🍴</title>
     <style>
+/*card style*/
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.card a {
+    background-color: #f9ac06;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+    background-color: #ff8800;
+}
+
+
+/*-----*/
         .form-text{
             font-family:'Sarcamento',cursive ;
             color: #000000;
@@ -120,54 +169,56 @@
         
         .search-style-9 {
     display: flex;
-    justify-content: center; /* Center the search bar */
+    justify-content: center;
     align-items: center;
-    margin: 20px auto; /* Spacing around the container */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 100%;
+    margin: 20px 0;
+}
+
+.search-style-9 form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between input and button */
+    max-width: 500px; /* Limits the width of the entire form */
+    width: 100%; /* Makes it responsive */
 }
 
 .search-style-9 input {
-    border: 1px solid black; /* Border style */
-    border-radius: 15px; /* Rounded corners */
-    font-size: 16px; /* Adjust font size */
-    padding: 10px; /* Adjust padding */
-    width: calc(100% - 120px); /* Adjust width dynamically (input + button width) */
-    max-width: 400px; /* Set a maximum width for larger screens */
-    min-width: 200px; /* Ensure usability on smaller screens */
+    flex: 1; /* Ensures the input field takes available space */
+    border: 1px solid black; /* Black border */
+    border-radius: 25px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    padding: 10px; /* Padding for better appearance */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    flex: 1; /* Let input take available space */
 }
 
 .search-style-9 button {
-    margin-left: 10px; /* Space between input and button */
-    border-radius: 15px; /* Match rounded corners */
-    padding: 10px 20px; /* Button padding */
-    background-color: #f9ac06; /* Orange background */
-    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* Removes default border */
+    border-radius: 25px; /* Matches the input style */
+    background-color: #f9ac06; /* Orange color */
     color: white; /* White text */
-    font-size: 16px; /* Adjust font size */
+    font-size: 16px; /* Font size */
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
 }
 
 .search-style-9 button:hover {
     background-color: #ff8800; /* Darker orange on hover */
 }
 
-@media (max-width: 600px) {
-    .search-style-9 {
-        flex-direction: column; /* Stack input and button vertically */
-        align-items: stretch; /* Make them take full width */
+@media (max-width: 768px) {
+    .search-style-9 form {
+        flex-direction: row; /* Stacks input and button vertically */
+/* Adds more space between elements */
     }
+
     .search-style-9 input {
-        margin-bottom: 10px; /* Add space below input */
-        margin-left: 0; /* Reset margin for smaller screens */
-        width: 100%; /* Full width on smaller screens */
+        width: 75%; /* Full width on smaller screens */
     }
-    .search-style-9 button {
-        margin-left: 0; /* Remove space between button and input */
-    }
+
+    
 }
 
     </style>
@@ -204,11 +255,12 @@
 <div class="container my-4">
     <h1 class="slik-text text-center">What Can I Cook With</h1>
     <div class="search-style-9">
-        <form method="GET" action="/search-results" class="d-flex align-items-center">
-            <input type="text" name="query" class="form-control" placeholder="Enter an ingredient" required>
-            <button type="submit" class="btn btn-primary ms-2">Search</button>
+        <form method="GET" action="/search-results">
+            <input type="text" name="query" placeholder="Enter an ingredient" required>
+            <button type="submit">🍽️ Savor</button>
         </form>
     </div>
+    
 
     <% if (recipes && recipes.length> 0) { %>
         <h2 class="form-text mt-4">Search Results for:</h2>
