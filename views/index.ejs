@@ -140,7 +140,7 @@
                         <a class="sim-text nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="sim-text nav-link" href="/contact">Contact</a>
+                        <a class="sim-text nav-link" onclick="scrollToFooter()">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -217,7 +217,7 @@
         </form>
     </div>
     <!--footer-->
-    <footer>
+    <footer id="1">
         <style>
           footer {
             padding: 16px;
@@ -288,6 +288,12 @@
     <script>
         function scrollToSearch() {
             const element = document.getElementById("ingredient-search");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+        function scrollToFooter() {
+            const element = document.getElementById("1");
             if (element) {
                 element.scrollIntoView({ behavior: "smooth" });
             }
