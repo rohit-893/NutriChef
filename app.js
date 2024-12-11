@@ -46,8 +46,7 @@ app.get("/search-results", async (req, res) => {
 
         let defaultServings = 2;
         res.render("search", { recipes: recipeDetails.data.results, defaultServings });
-        let defaultServings = 4;
-        res.render("search", { recipes: recipeDetails.data.results, defaultServings, query });
+        
     } catch (error) {
         console.error(error.message);
         res.render("search", { recipes: [], defaultServings }); // Render with no results in case of error
