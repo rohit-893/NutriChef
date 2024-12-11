@@ -17,42 +17,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-<!--form-text style-->
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!--form-text style-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <style>
-        .form-text{
-            font-family:'Sarcamento',cursive ;
+        .form-text {
+            font-family: 'Sarcamento', cursive;
             color: #000000;
             font-weight: bold;
             font-size: x-large;
         }
+
         .slik-text {
-            font-family: 'Fredoka One',cursive; /* Applying the food-related font style */
-            font-weight: bolder; /* Making it bold */
+            font-family: 'Fredoka One', cursive;
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
             color: #000000;
         }
-         .sim-text {
-            font-family: 'Gloria Hallelujah'; /* Applying the food-related font style */
-            font-weight: bolder; /* Making it bold */
+
+        .sim-text {
+            font-family: 'Gloria Hallelujah';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
             color: #ffffff;
         }
-         .nav-text {
-            font-family: 'Dancing Script'; /* Applying the food-related font style */
-            font-weight: bolder; /* Making it bold */
+
+        .nav-text {
+            font-family: 'Dancing Script';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
             color: #ffffff;
         }
+
         /* Hero Section Styles */
         .hero-text {
-            font-family: 'Amatic SC', cursive; /* Applying the food-related font style */
-            font-size: 4rem; /* Adjusting font size */
-            font-weight: bold; /* Making it bold */
+            font-family: 'Amatic SC', cursive;
+            /* Applying the food-related font style */
+            font-size: 4rem;
+            /* Adjusting font size */
+            font-weight: bold;
+            /* Making it bold */
             color: #ffffff;
         }
+
         .hero-section {
             position: relative;
             width: 100%;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
+            /* Full viewport height */
             background-image: url('https://img.freepik.com/premium-photo/healthy-eating-wallpaper_1134901-236725.jpg?w=1060');
             background-size: cover;
             background-position: center;
@@ -64,7 +79,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
         }
 
         .hero-content {
@@ -82,38 +98,49 @@
         }
 
         .btn-custom {
-            background-color: #f9ac06 !important; /* Set the background color to orange */
-            color: #fff !important; /* Set the text color to white */
-            border-radius: 25px !important; /* Make the button rounded */
-            padding: 10px 30px !important; /* Adjust padding for better size */
-            font-size: 16px !important; /* Adjust font size */
+            background-color: #f9ac06 !important;
+            /* Set the background color to orange */
+            color: #fff !important;
+            /* Set the text color to white */
+            border-radius: 25px !important;
+            /* Make the button rounded */
+            padding: 10px 30px !important;
+            /* Adjust padding for better size */
+            font-size: 16px !important;
+            /* Adjust font size */
         }
 
         /* Optional: Hover effect for button */
         .btn-custom:hover {
-            background-color: #ff8800 !important; /* Darker orange on hover */
+            background-color: #ff8800 !important;
+            /* Darker orange on hover */
             color: #fff !important;
         }
 
         /* Custom Navbar Styles */
         .navbar-custom {
-            background-color: #000000 !important; /* Ensure background is black */
+            background-color: #000000 !important;
+            /* Ensure background is black */
         }
 
         .navbar-custom .navbar-nav .nav-link {
-            color: #ffffff !important; /* Ensure text is white */
+            color: #ffffff !important;
+            /* Ensure text is white */
         }
 
         .navbar-custom .navbar-brand {
-            color: #ffffff !important; /* Ensure brand text is white */
+            color: #ffffff !important;
+            /* Ensure brand text is white */
         }
 
         .navbar-toggler {
-            border-color: #000000 !important; /* Make hamburger icon border white */
+            border-color: #000000 !important;
+            /* Make hamburger icon border white */
         }
 
         .navbar-toggler-icon {
-            background-color: #00000000 !important; /* Make hamburger icon background white */
+            background-color: #00000000 !important;
+            /* Make hamburger icon background white */
         }
     </style>
     <title>NutriChef🍴</title>
@@ -121,7 +148,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom py-3">
+    <nav class="navbar navbar-expand-lg navbar-custom py-2 sticky-top">
         <div class="container-fluid">
             <!-- Brand -->
             <a class=" nav-text navbar-brand fw-bold fs-3" href="#">NutriChef🍴</a>
@@ -170,19 +197,23 @@
                 <h5 class="form-text" style="font-size: large;">Dietary Options</h5>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="vegetarian" name="vegetarian" value="true">
-                    <label class="form-check-label" for="vegetarian">Vegetarian (No ingredients may contain meat or meat by-products, such as bones or gelatin.)</label>
+                    <label class="form-check-label" for="vegetarian">Vegetarian (No ingredients may contain meat or meat
+                        by-products, such as bones or gelatin.)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="vegan" name="vegan" value="true">
-                    <label class="form-check-label" for="vegan">Vegan (No ingredients may contain meat or meat by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.)</label>
+                    <label class="form-check-label" for="vegan">Vegan (No ingredients may contain meat or meat
+                        by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree" value="true">
-                    <label class="form-check-label" for="glutenFree">Gluten-Free (Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them.)</label>
+                    <label class="form-check-label" for="glutenFree">Gluten-Free (Eliminating gluten means avoiding
+                        wheat, barley, rye, and other gluten-containing grains and foods made from them.)</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="ketogenic" name="ketogenic" value="true">
-                    <label class="form-check-label" for="ketogenic">Ketogenic (High fat, protein-rich foods are acceptable, and high carbohydrate foods are not.)</label>
+                    <label class="form-check-label" for="ketogenic">Ketogenic (High fat, protein-rich foods are
+                        acceptable, and high carbohydrate foods are not.)</label>
                 </div>
             </div>
             <div class="mb-3">
@@ -219,72 +250,73 @@
     <!--footer-->
     <footer>
         <style>
-          footer {
-            padding: 16px;
-            background-color: black;
-            color: white;
-            text-align: center;
-          }
-      
-          footer p {
-            margin: 0;
-            font-size: 14px;
-          }
-      
-          footer .social-links {
-            margin-top: 8px;
-          }
-      
-          footer .social-links a {
-            margin: 0 12px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            transition: color 0.3s ease;
-          }
-      
-          footer .social-links a:hover {
-            color: #f9ac06; /* Highlight color on hover */
-          }
-      
-          footer .social-links i {
-            margin-right: 8px;
-          }
-      
-          footer .email {
-            margin-top: 8px;
-            display: block;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-          }
-      
-          footer .email:hover {
-            color: #f9ac06; /* Highlight color on hover */
-          }
+            footer {
+                padding: 5px;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
+
+            footer p {
+                margin: 0;
+                font-size: 12px;
+            }
+
+            footer .social-links {
+                margin-top: 5px;
+            }
+
+            footer .social-links a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
+
+            footer .social-links a:hover {
+                color: #f9ac06;
+                /* Highlight color on hover */
+            }
+
+            footer .social-links i {
+                margin-right: 8px;
+            }
+
+            footer .email {
+                margin-top: 8px;
+                display: block;
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            footer .email:hover {
+                color: #f9ac06;
+                /* Highlight color on hover */
+            }
         </style>
-      
+
         <p>© 2024 NutriChef | All Rights Reserved</p>
         <div class="social-links">
-          <a href="#" target="_blank">
-            <i class="fab fa-facebook"></i> Facebook
-          </a>
-          <a href="#" target="_blank">
-            <i class="fab fa-instagram"></i> Instagram
-          </a>
-          <a href="#" target="_blank">
-            <i class="fab fa-twitter"></i> Twitter
-          </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
         </div>
         <a href="mailto:preetham92.official@gmail.com" class="email">
-          <i class="fas fa-envelope"></i>NutriChef🍴
+            <i class="fas fa-envelope"></i>NutriChef🍴
         </a>
-      
-        
-      </footer>
+
+
+    </footer>
     <!-- Include Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>  
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
         function scrollToSearch() {
             const element = document.getElementById("ingredient-search");
