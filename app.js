@@ -66,6 +66,7 @@ app.get("/recipe/:id", async (req, res) => {
         return res.render("show", {
             recipe: cachedRecipe,
             nutritionLabel: cachedRecipe.nutritionLabel,
+            trivia : cachedRecipe.trivia,
             desiredServings: req.query.servings || cachedRecipe.servings,
             scaledIngredients,
         });
@@ -73,13 +74,15 @@ app.get("/recipe/:id", async (req, res) => {
 
     try {
         // Fetch recipe details and nutrition label in parallel
-        const [recipeDetails, nutritionLabel] = await Promise.all([
+        const [recipeDetails, nutritionLabel, trivia] = await Promise.all([
             axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`),
-            axios.get(`https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel?apiKey=${API_KEY}`)
+            axios.get(`https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel?apiKey=${API_KEY}`),
+            axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${API_KEY}`)
         ]);
 
         const recipe = recipeDetails.data;
         const nutritionData = nutritionLabel.data;
+        let triviaText = trivia.data.text;
 
         let defaultServings = recipe.servings;
         let desiredServings = parseInt(req.query.servings) || defaultServings;
@@ -99,6 +102,7 @@ app.get("/recipe/:id", async (req, res) => {
             nutritionLabel: nutritionData,
             desiredServings,
             scaledIngredients,
+            trivia : triviaText,
         });
     } catch (error) {
         console.error(error.message);
