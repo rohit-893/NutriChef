@@ -294,123 +294,111 @@
             </div>
         </div>
     </nav>
-
-    <<<<<<< HEAD <!--search-->
-        <div class="container my-4">
-            <h1 class="slik-text text-center">What Can I Cook With</h1>
-            <form class="my-4" method="GET" action="/search-results">
-                <div class="input-group">
-                    <input type="text" name="query" class="form-control" placeholder="Enter a ingredient" required>
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
+    <!--search-->
+    <div class="container my-4">
+        <h1 class="slik-text text-center">What Can I Cook With</h1>
+        <div class="search-style-9">
+            <form method="GET" action="/search-results">
+                <input type="text" name="query" placeholder="Enter an ingredient" required>
+                <button type="submit">🍽️ Savor</button>
             </form>
-            =======
-            <!--search-->
-            <div class="container my-4">
-                <h1 class="slik-text text-center">What Can I Cook With</h1>
-                <div class="search-style-9">
-                    <form method="GET" action="/search-results">
-                        <input type="text" name="query" placeholder="Enter an ingredient" required>
-                        <button type="submit">🍽️ Savor</button>
-                    </form>
-                </div>
+        </div>
 
-                >>>>>>> 23e6b7108dad26f04b31cc9da2b5a90ddca5e508
-
-                <% if (recipes && recipes.length> 0) { %>
-                    <h2 class="form-text mt-4">Search Results for:</h2>
-                    <div class="row">
-                        <% recipes.forEach(recipe=> { %>
-                            <div class="col-md-4 mb-4">
-                                <div class="card h-100">
-                                    <img src="<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%= recipe.title %>
-                                        </h5>
-                                        <a href="/recipe/<%= recipe.id %>?servings=<%= defaultServings %>"
-                                            class="btn btn-primary">View
-                                            Recipe</a>
-                                    </div>
-                                </div>
+        <% if (recipes && recipes.length> 0) { %>
+            <h2 class="form-text mt-4">Search Results for <%= query%>:
+            </h2>
+            <div class="row">
+                <% recipes.forEach(recipe=> { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= recipe.title %>
+                                </h5>
+                                <a href="/recipe/<%= recipe.id %>?servings=<%= defaultServings %>"
+                                    class="btn btn-primary">View
+                                    Recipe</a>
                             </div>
-                            <% }) %>
+                        </div>
                     </div>
-                    <% } else if (recipes) { %>
-                        <p class="text-danger mt-4">No recipes found for your search. Please try again!</p>
-                        <% } %>
+                    <% }) %>
             </div>
-            <!--footer-->
-            <footer>
-                <style>
-                    footer {
-                        padding: 5px;
-                        background-color: black;
-                        color: white;
-                        text-align: center;
-                    }
+            <% } else if (recipes) { %>
+                <p class="text-danger mt-4">No recipes found for your search. Please try again!</p>
+                <% } %>
+    </div>
+    <!--footer-->
+    <footer>
+        <style>
+            footer {
+                padding: 5px;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
 
-                    footer p {
-                        margin: 0;
-                        font-size: 12px;
-                    }
+            footer p {
+                margin: 0;
+                font-size: 12px;
+            }
 
-                    footer .social-links {
-                        margin-top: 5px;
-                    }
+            footer .social-links {
+                margin-top: 5px;
+            }
 
-                    footer .social-links a {
-                        color: white;
-                        text-decoration: none;
-                        font-weight: bold;
-                        font-size: 15px;
-                        transition: color 0.3s ease;
-                    }
+            footer .social-links a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 15px;
+                transition: color 0.3s ease;
+            }
 
-                    footer .social-links a:hover {
-                        color: #f9ac06;
-                        /* Highlight color on hover */
-                    }
+            footer .social-links a:hover {
+                color: #f9ac06;
+                /* Highlight color on hover */
+            }
 
-                    footer .social-links i {
-                        margin-right: 8px;
-                    }
+            footer .social-links i {
+                margin-right: 8px;
+            }
 
-                    footer .email {
-                        margin-top: 8px;
-                        display: block;
-                        color: white;
-                        text-decoration: none;
-                        font-size: 14px;
-                    }
+            footer .email {
+                margin-top: 8px;
+                display: block;
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+            }
 
-                    footer .email:hover {
-                        color: #f9ac06;
-                        /* Highlight color on hover */
-                    }
-                </style>
+            footer .email:hover {
+                color: #f9ac06;
+                /* Highlight color on hover */
+            }
+        </style>
 
-                <p>© 2024 NutriChef | All Rights Reserved</p>
-                <div class="social-links">
-                    <a href="#" target="_blank">
-                        <i class="fab fa-facebook"></i> Facebook
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-twitter"></i> Twitter
-                    </a>
-                </div>
-                <a href="mailto:preetham92.official@gmail.com" class="email">
-                    <i class="fas fa-envelope"></i>NutriChef🍴
-                </a>
+        <p>© 2024 NutriChef | All Rights Reserved</p>
+        <div class="social-links">
+            <a href="#" target="_blank">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+        </div>
+        <a href="mailto:preetham92.official@gmail.com" class="email">
+            <i class="fas fa-envelope"></i>NutriChef🍴
+        </a>
 
 
-            </footer>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                crossorigin="anonymous"></script>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
