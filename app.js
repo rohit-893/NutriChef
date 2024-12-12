@@ -120,6 +120,10 @@ function adjustIngredients(recipe, servings) {
     });
 }
 
+app.get("/about",(req,res)=>{
+    res.render("aboutus")
+})
+
 // Server Setup
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
