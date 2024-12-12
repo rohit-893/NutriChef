@@ -164,7 +164,7 @@
                         <a class="sim-text nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="sim-text nav-link" href="./aboutus.ejs">About</a>
+                        <a class="sim-text nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="sim-text nav-link" href="#" onclick="scrollToFooter()">Contact</a>
@@ -174,79 +174,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-text">Cooking, Made Easy with What You Have</h1>
-            <button class="btn-custom mt-4" onclick="scrollToSearch()">Start Cooking</button>
-        </div>
-    </section>
-
-    <!-- Search bar -->
-    <div class="container my-5" id="ingredient-search">
-        <h1 class="slik-text text-center mb-4">Enter Ingredient to Find Recipes</h1>
-
-        <form action="/search-results" method="GET">
-            <div class="mb-3">
-                <h5 class="form-text">Enter Ingredient</h5>
-                <input type="text" class="form-control" id="query" name="query" placeholder="e.g., Paneer" required>
-            </div>
-
-            <div class="mb-3">
-                <h5 class="form-text" style="font-size: large;">Dietary Options</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vegetarian" name="vegetarian" value="true">
-                    <label class="form-check-label" for="vegetarian">Vegetarian (No ingredients may contain meat or meat
-                        by-products, such as bones or gelatin.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vegan" name="vegan" value="true">
-                    <label class="form-check-label" for="vegan">Vegan (No ingredients may contain meat or meat
-                        by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree" value="true">
-                    <label class="form-check-label" for="glutenFree">Gluten-Free (Eliminating gluten means avoiding
-                        wheat, barley, rye, and other gluten-containing grains and foods made from them.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="ketogenic" name="ketogenic" value="true">
-                    <label class="form-check-label" for="ketogenic">Ketogenic (High fat, protein-rich foods are
-                        acceptable, and high carbohydrate foods are not.)</label>
-                </div>
-            </div>
-            <div class="mb-3">
-                <h5 class="form-text" style="font-size: large;">Intolerances Options</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="dairy" name="dairy" value="true">
-                    <label class="form-check-label" for="dairy">Dairy</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="grain" name="grain" value="true">
-                    <label class="form-check-label" for="grain">Grain</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="peanut" name="peanut" value="true">
-                    <label class="form-check-label" for="peanut">Peanut</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="seafood" name="seafood" value="true">
-                    <label class="form-check-label" for="seafood">Seafood</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="soy" name="soy" value="true">
-                    <label class="form-check-label" for="soy">Soy</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="wheat" name="wheat" value="true">
-                    <label class="form-check-label" for="wheat">Wheat</label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-custom">🍴Search</button>
-        </form>
-    </div>
+    
     <!--footer-->
    <footer id="footer" class="sticky-bottom">
     <style>
