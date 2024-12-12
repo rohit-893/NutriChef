@@ -265,6 +265,35 @@
 
 
         }
+        /* Back to Top Button Styles */
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Hidden by default */
+    background-color: rgb(33, 167, 251);
+    border-color: rgb(16, 201, 252);
+    color: rgb(16, 201, 252);
+    border: none;
+    box-sizing:border-box;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#backToTop:hover {
+    background-color: rgb(33, 167, 251);
+}
+#backToTopIcon {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: contain;
+}
     </style>
 
 <body>
@@ -288,7 +317,7 @@
                         <a class="sim-text nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="sim-text nav-link" href="#">Contact</a>
+                        <a class="sim-text nav-link" href="#" onclick="scrollToFooter()">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -327,8 +356,13 @@
                 <p class="text-danger mt-4">No recipes found for your search. Please try again!</p>
                 <% } %>
     </div>
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Go to top">
+        <img src="https://em-content.zobj.net/source/microsoft/319/up-arrow_2b06-fe0f.png" alt="Back to Top" id="backToTopIcon" />
+    </button>
+
     <!--footer-->
-    <footer class="sticky-bottom">
+    <footer id="footer" class="sticky-bottom">
         <style>
            
             footer {
@@ -397,6 +431,31 @@
 
 
     </footer>
+    <script>
+        // Show the button when the user scrolls down
+window.onscroll = function () {
+    const backToTopButton = document.getElementById("backToTop");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        backToTopButton.style.display = "block";
+    } else {
+        backToTopButton.style.display = "none";
+    }
+};
+
+// Scroll to the top of the page when the button is clicked
+document.getElementById("backToTop").onclick = function () {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+};
+function scrollToFooter() {
+            const element = document.getElementById("footer");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
