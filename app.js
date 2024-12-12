@@ -3,7 +3,7 @@ const axios = require("axios");
 const app = express();
 const path = require("path");
 
-const API_KEY = "29366fda3c2b4239a463e114af63f142"; // Replace with your actual Spoonacular API key
+const API_KEY = "928bbe78556741c89c46967b85e5ee17"; // Replace with your actual Spoonacular API key
 
 // Simple in-memory cache (this can be further improved with a library like Redis for production)
 const cache = {};

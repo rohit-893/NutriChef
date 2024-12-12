@@ -352,9 +352,25 @@
                     </div>
                     <% }) %>
             </div>
-            <% } else if (recipes) { %>
-                <p class="text-danger mt-4">No recipes found for your search. Please try again!</p>
+            <div>
+                
+            </div>
+            <div>
+                <% } else if (recipes) { %>
+                    <p class="text-danger mt-4" style="font-size:250%;">No recipes found for your search. Please try again!</p>
+                    <div class="container-fluid" style="margin-bottom: 5;">
+                        <br>
+                        <br>
+                        <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    </div>
+                    
                 <% } %>
+            </div>
+            
     </div>
     <!-- Back to Top Button -->
     <button id="backToTop" title="Go to top">
@@ -365,12 +381,17 @@
     <footer id="footer" class="sticky-bottom">
         <style>
            
-            footer {
-                padding: 16px;
-                background-color: black;
-                color: white;
-                text-align: center;
-            }
+           footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    z-index: 1000; /* Ensures the footer is above other content */
+}
 
             footer p {
                 margin: 0;
