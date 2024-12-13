@@ -5,53 +5,478 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Mini Project</title>
-</head>
-
-<body>
-    <div class="container mt-5">
-        <h1>All Recepies</h1>
-
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <% if (recipes && recipes.length> 0) { %>
-                    <ul class="list-group">
-                        <% recipes.forEach(recipe=> { %>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="/show/<%= recipe._id %>" class="text-decoration-none">
-                                    <h5>
-                                        <%= recipe.TranslatedRecipeName || recipe.RecipeName %>
-                                    </h5>
-                                </a>
-                                <span class="badge bg-secondary">
-                                    <%= recipe.Servings %> servings
-                                </span>
-                            </li>
-                            <% }) %>
-                    </ul>
-                    <% } else { %>
-                        <p class="text-center">No recipes found!</p>
-                        <% } %>
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!--/*font style*/-->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <!--form-text style-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>NutriChef🍴</title>
+    <style>
+        /*card style*/
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-img-top {
+            border-bottom: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-title {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #333;
+        }
+        
+        .card a {
+            background-color: #f9ac06;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .card a:hover {
+            background-color: #ff8800;
+        }
+        
+        
+        /*-----*/
+        .form-text {
+            font-family: 'Sarcamento', cursive;
+            color: #000000;
+            font-weight: bold;
+            font-size: x-large;
+        }
+        
+        .slik-text {
+            font-family: 'Fredoka One', cursive;
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #000000;
+        }
+        
+        .sim-text {
+            font-family: 'Gloria Hallelujah';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #ffffff;
+        }
+        
+        .nav-text {
+            font-family: 'Dancing Script';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #ffffff;
+        }
+        
+        /* Hero Section Styles */
+        .hero-text {
+            font-family: 'Amatic SC', cursive;
+            /* Applying the food-related font style */
+            font-size: 4rem;
+            /* Adjusting font size */
+            font-weight: bold;
+            /* Making it bold */
+            color: #ffffff;
+        }
+        
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            /* Full viewport height */
+            background-image: url('https://img.freepik.com/premium-photo/healthy-eating-wallpaper_1134901-236725.jpg?w=1060');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        .btn-custom {
+            background-color: #f9ac06 !important;
+            /* Set the background color to orange */
+            color: #fff !important;
+            /* Set the text color to white */
+            border-radius: 25px !important;
+            /* Make the button rounded */
+            padding: 10px 30px !important;
+            /* Adjust padding for better size */
+            font-size: 16px !important;
+            /* Adjust font size */
+        }
+        
+        /* Optional: Hover effect for button */
+        .btn-custom:hover {
+            background-color: #ff8800 !important;
+            /* Darker orange on hover */
+            color: #fff !important;
+        }
+        
+        /* Custom Navbar Styles */
+        .navbar-custom {
+            background-color: #000000 !important;
+            /* Ensure background is black */
+        }
+        
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff !important;
+            /* Ensure text is white */
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            /* Ensure brand text is white */
+        }
+        
+        .navbar-toggler {
+            border-color: #000000 !important;
+            /* Make hamburger icon border white */
+        }
+        
+        .navbar-toggler-icon {
+            background-color: #00000000 !important;
+            /* Make hamburger icon background white */
+        }
+        
+        .search-style-9 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .search-style-9 form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Space between input and button */
+            max-width: 500px;
+            /* Limits the width of the entire form */
+            width: 100%;
+            /* Makes it responsive */
+        }
+        
+        .search-style-9 input {
+            flex: 1;
+            /* Ensures the input field takes available space */
+            border: 1px solid black;
+            /* Black border */
+            border-radius: 25px;
+            /* Rounded corners */
+            font-size: 16px;
+            /* Font size */
+            padding: 10px;
+            /* Padding for better appearance */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+        
+        .search-style-9 button {
+            padding: 10px 20px;
+            /* Padding for the button */
+            border: none;
+            /* Removes default border */
+            border-radius: 25px;
+            /* Matches the input style */
+            background-color: #f9ac06;
+            /* Orange color */
+            color: white;
+            /* White text */
+            font-size: 16px;
+            /* Font size */
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            transition: background-color 0.3s ease;
+            /* Smooth hover transition */
+        }
+        
+        .search-style-9 button:hover {
+            background-color: #ff8800;
+            /* Darker orange on hover */
+        }
+        
+        @media (max-width: 768px) {
+            .search-style-9 form {
+                flex-direction: row;
+                /* Stacks input and button vertically */
+                /* Adds more space between elements */
+            }
+            
+            .search-style-9 input {
+                width: 75%;
+                /* Full width on smaller screens */
+            }
+            
+            
+        }
+        /* Back to Top Button Styles */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none; /* Hidden by default */
+            background-color: rgb(33, 167, 251);
+            border-color: rgb(16, 201, 252);
+            color: rgb(16, 201, 252);
+            border: none;
+            box-sizing:border-box;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        #backToTop:hover {
+            background-color: rgb(33, 167, 251);
+        }
+        #backToTopIcon {
+            width: 100%;
+            height: 100%;
+            
+            object-fit: contain;
+        }
+    </style>
+    
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-custom py-2">
+            <div class="container-fluid">
+                <!-- Brand -->
+                <a class=" nav-text navbar-brand fw-bold fs-3" href="/">NutriChef🍴</a>
+                <!-- Toggler -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fas fa-hamburger">🍔</i></span>
+            </button>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="sim-text nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sim-text nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sim-text nav-link" href="#" onclick="scrollToFooter()">Contact</a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <div class="my-4 btn-group">
-            <% if (page> 1) { %>
-                <a href="/search?ingredient=<%= ingredient %>&page=<%= page - 1 %>" class="btn btn-primary">Previous</a>
-                <% } %>
-
-                    <% if (page < totalPages) { %>
-                        <a href="/search?ingredient=<%= ingredient %>&page=<%= page + 1 %>"
-                            class="btn btn-primary">Next</a>
-                        <% } %>
-                            <a href="/" class="btn btn-primary">Home</a>
+    </nav>
+    <!--search-->
+    <div class="container my-4">
+        <h1 class="slik-text text-center">What Can I Cook With</h1>
+        <div class="search-style-9">
+            <form method="GET" action="/search-results">
+                <input type="text" name="query" placeholder="Enter an ingredient" required>
+                <button type="submit">🍽️ Savor</button>
+            </form>
         </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+        
+        <% if (recipes && recipes.length> 0) { %>
+            <h2 class="form-text mt-4 mb-4">Search Results for <%= query %>:</h2>
+            <div class="row">
+                <% recipes.forEach(recipe=> { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= recipe.title %>
+                                </h5>
+                                <a href="/recipe/<%= recipe.id %>?servings=<%= defaultServings %>"
+                                    class="btn btn-primary">View
+                                    Recipe</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <div>
+                        <% } else if (recipes) { %>
+                            <div class="container">
+                                <p class="text-danger mt-4" style="font-size:250%;">No recipes found for your search. Please try again!</p>
+                            </div>
+                            <% } %>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+            <!-- Back to Top Button -->
+            <button id="backToTop" title="Go to top">
+                <img src="https://em-content.zobj.net/source/microsoft/319/up-arrow_2b06-fe0f.png" alt="Back to Top" id="backToTopIcon" />
+            </button>
+            
+            <!--footer-->
+            <footer id="footer" class="sticky-bottom">
+                <style>
+                    
+                    footer {
+                        
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        padding: 16px;
+                        background-color: black;
+                        color: white;
+                        text-align: center;
+                        z-index: 1000;
+                    }
+                    
+                    footer p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                    
+                    footer .social-links {
+                        margin-top: 8px;
+                    }
+                    
+                    footer .social-links a {
+                        margin: 0 12px;
+                        color: white;
+                        text-decoration: none;
+                        font-weight: bold;
+                        font-size: 18px;
+                        transition: color 0.3s ease;
+                    }
+                    
+                    footer .social-links a:hover {
+                        color: #f9ac06;
+                        /* Highlight color on hover */
+                    }
+                    
+                    footer .social-links i {
+                        margin-right: 8px;
+                    }
+                    
+                    footer .email {
+                        margin-top: 8px;
+                        display: block;
+                        color: white;
+                        text-decoration: none;
+                        font-size: 14px;
+                    }
+                    
+                    footer .email:hover {
+                        color: #f9ac06;
+                        /* Highlight color on hover */
+                    }
+                </style>
+                
+                <p>© 2024 NutriChef | All Rights Reserved</p>
+                <div class="social-links">
+                    <a href="#" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </div>
+                <a href="mailto:preetham92.official@gmail.com" class="email">
+                    <i class="fas fa-envelope"></i>NutriChef🍴
+                </a>
+                
+                
+            </footer>
+            <script>
+                // Show the button when the user scrolls down
+                window.onscroll = function () {
+                    const backToTopButton = document.getElementById("backToTop");
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        backToTopButton.style.display = "block";
+                    } else {
+                        backToTopButton.style.display = "none";
+                    }
+                };
+                
+                // Scroll to the top of the page when the button is clicked
+                document.getElementById("backToTop").onclick = function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                    });
+                };
+                function scrollToFooter() {
+                    const element = document.getElementById("footer");
+                    if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }
+                }
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        </body>
+        
+        </html>

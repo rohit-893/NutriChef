@@ -5,64 +5,716 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Mini Project</title>
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <!--form-text style-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>
+        <%= recipe.title %> - Recipe Details
+    </title>
+    <style>
+        .card {
+            border: 1px solid black;
+        }
+        
+        .card-img-top {
+            border-bottom: 1px solid black;
+        }
+        
+        .form-text {
+            font-family: 'Sarcamento', cursive;
+            color: #000000;
+            font-weight: bold;
+            font-size: x-large;
+        }
+        
+        .slik-text {
+            font-family: 'Fredoka One', cursive;
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #000000;
+        }
+        
+        .sim-text {
+            font-family: 'Gloria Hallelujah';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #ffffff;
+        }
+        
+        .nav-text {
+            font-family: 'Dancing Script';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #ffffff;
+        }
+        
+        .navbar-custom {
+            background-color: #000000 !important;
+            /* Ensure background is black */
+        }
+        
+        .navbar-custom .navbar-nav .nav-link {
+            color: #ffffff !important;
+            /* Ensure text is white */
+        }
+        
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            /* Ensure brand text is white */
+        }
+        
+        .navbar-toggler {
+            border-color: #000000 !important;
+            /* Make hamburger icon border white */
+        }
+        
+        .navbar-toggler-icon {
+            background-color: #00000000 !important;
+            /* Make hamburger icon background white */
+        }
+        
+        .nav-text {
+            font-family: 'Dancing Script';
+            /* Applying the food-related font style */
+            font-weight: bolder;
+            /* Making it bold */
+            color: #ffffff;
+        }
+        
+        .fixed-height {
+            max-height: 200px;
+            /* Set the desired maximum height */
+            overflow: hidden;
+            /* Hide overflow to prevent scrollbars */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .scale-content {
+            width: 150%;
+            /* Increase width to 120% of its original size */
+            transform: scale(0.72);
+            /* Scale down the content */
+            transform-origin: top left;
+            /* Ensure scaling is from the top left corner */
+        }
+        /*------------*/
+        /* Modern Design Enhancements */
+        /* Recipe Detail Page Design Enhancements */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f4f6f7;
+            --transition-speed: 0.3s;
+        }
+        
+        /* Recipe Title Styling */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            position: relative;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            
+        }
+        
+        /* Recipe Image Enhanced */
+        .recipe-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: box-shadow var(--transition-speed) ease;
+        }
+        
+        .recipe-image-container:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .recipe-image-container img {
+            transition: transform var(--transition-speed) ease;
+        }
+        
+        .recipe-image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Recipe Details Styling */
+        .recipe-card {
+            border: none;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+        }
+        
+        /* Servings Form */
+        form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        
+        
+        /* Nutrition Label */
+        .nutrition-label-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .nutrition-label-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Ingredients Section */
+        .ingredient-section, .instruction-section {
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .ingredient-item {
+            align-items: center;
+            text-align: left;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .ingredient-item:hover {
+            background-color: #f0f0f0;
+            transform: translateX(10px);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+        
+        /* Subtle Animations */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .recipe-card, .nutrition-label-container {
+            animation: subtleFloat 3s ease-in-out infinite;
+        }
+        
+        .btn-custom {
+            background-color: #f9ac06 !important;
+            /* Set the background color to orange */
+            color: #fff !important;
+            /* Set the text color to white */
+            border-radius: 25px !important;
+            /* Make the button rounded */
+            padding: 10px 30px !important;
+            /* Adjust padding for better size */
+            font-size: 16px !important;
+            /* Adjust font size */
+        }
+        
+        /* Optional: Hover effect for button */
+        .btn-custom:hover {
+            background-color: #ff8800 !important;
+            /* Darker orange on hover */
+            color: #fff !important;
+        }
+        
+        .update-custom {
+            background-color: #f9ac06 !important;
+            /* Set the background color to orange */
+            color: #fff !important;
+            /* Set the text color to white */
+            border-radius: 25px !important;
+            /* Make the button rounded */
+            padding: 4px 15px !important;
+            /* Adjust padding for better size */
+            font-size: 14px !important;
+            /* Adjust font size */
+        }
+        
+        /* Optional: Hover effect for button */
+        .update-custom:hover {
+            background-color: #ff8800 !important;
+            /* Darker orange on hover */
+            color: #fff !important;
+        }
+        /*for responsive*/
+        /* Existing CSS remains the same, adding these responsive adjustments */
+        
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .row {
+                flex-direction: column;
+            }
+            
+            .recipe-section, 
+            .nutrition-section, 
+            .ingredient-section, 
+            .instruction-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .recipe-image-container img {
+                width: 100%;
+                height: auto;
+            }
+            
+            .col-lg-7, 
+            .col-lg-4, 
+            .col-lg-6 {
+                width: 100%;
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            
+            .recipe-card, 
+            .nutrition-label-container {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .recipe-section, 
+            .nutrition-section {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 200% !important;
+            }
+            
+            .form-text {
+                font-size: 180% !important;
+            }
+            
+            .ingredient-item, 
+            .list-group-item {
+                font-size: 0.9rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .btn-custom, 
+            .update-custom {
+                padding: 8px 20px !important;
+                font-size: 14px !important;
+            }
+            
+            form {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+            
+            form input, 
+            form button {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+        
+        /* Flexbox improvements for smaller screens */
+        @media (max-width: 992px) {
+            .d-flex {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+            
+            .col-md-6 {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+        /* Trivia icon style */
+.trivia-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.trivia-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Popup style */
+.trivia-popup {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 1000;
+    max-width: 250px;
+    font-family: Arial, sans-serif;
+}
+
+.trivia-popup::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+}
+
+    </style>
 </head>
 
 <body>
-    <div class="container my-4">
-        <h1 class="mb-4">
-            <%= recipe.TranslatedRecipeName %>
-        </h1>
-
-        <p><strong>Cuisine:</strong>
-            <%= recipe.Cuisine || 'Not specified' %>
-        </p>
-        <p><strong>Course:</strong>
-            <%= recipe.Course || 'Not specified' %>
-        </p>
-        <p><strong>Diet:</strong>
-            <%= recipe.Diet || 'Not specified' %>
-        </p>
-
-        <h3>Ingredients</h3>
-        <p>
-            <%= recipe.TranslatedIngredients %>
-        </p>
-
-        <h3>Instructions</h3>
-        <p>
-            <%= recipe.TranslatedInstructions %>
-        </p>
-
-        <p><strong>Preparation Time:</strong>
-            <%= recipe.PrepTimeInMins %> mins
-        </p>
-        <p><strong>Cooking Time:</strong>
-            <%= recipe.CookTimeInMins %> mins
-        </p>
-        <p><strong>Total Time:</strong>
-            <%= recipe.TotalTimeInMins %> mins
-        </p>
-        <p><strong>Servings:</strong>
-            <%= recipe.Servings %>
-        </p>
-
-
-        <p><strong>Source:</strong> <a href="<%= recipe.URL %>" target="_blank">
-                <%= recipe.URL %>
-            </a></p>
-
-
-            <a href="<%= referer %>" class="btn btn-primary">Back to Previous Page</a>
-            <a href="/" class="btn btn-primary">Back To Home</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom py-2">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class=" nav-text navbar-brand fw-bold fs-3" href="/">NutriChef🍴</a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-hamburger">🍔</i></span>
+        </button>
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="sim-text nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="sim-text nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="sim-text nav-link" href="#" onclick="scrollToFooter()">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-
-
+</nav>
+<div class="container-fluid my-4">
+    <!-- Recipe Title -->
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="mb-4 form-text" style="font-size:270%;">
+                <%= recipe.title %>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mx-auto">
+    <!-- Recipe Image and Nutrition Label -->
+    <div class="mx-2 row align-items-start ">
+        <!-- Recipe Image and Details -->
+        <div class="col-lg-7 recipe-section">
+            <div class="recipe-card border border-dark rounded overflow-hidden">
+                <div class="recipe-image-container position-relative">
+                    <img 
+                    src="<%= recipe.image %>" 
+                    alt="<%= recipe.title %>" 
+                    class="img-fluid w-100"
+                    >
+                </div>
+                <div class="p-4">
+                    <!-- Recipe Details -->
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <form action="/recipe/<%= recipe.id %>" method="get" class="d-flex align-items-center">
+                                <label for="servings" class="me-2"><strong>Servings:</strong></label>
+                                <input 
+                                type="number" 
+                                name="servings" 
+                                id="servings"
+                                min="1" 
+                                max="25" 
+                                class="form-control form-control-sm me-2" 
+                                style="border-radius: 10px;" 
+                                value="<%= desiredServings %>"
+                                >
+                                <button type="submit" class="update-custom" style="border-radius:20px; ">Update</button>
+                            </form>
+                            <p class="mt-3"><strong>Ready in:</strong> <%= recipe.readyInMinutes %> minutes</p>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <p><strong>For more details:</strong> <a href="<%= recipe.sourceUrl %>" target="_blank" class="text-decoration-none">View Original Recipe</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Nutrition Label -->
+        <div class="mx-4 col-lg-4 nutrition-section">
+            <div class="nutrition-label-container border border-dark rounded p-4 bg-light">
+                <div class="nutrition-label">
+                    <%- nutritionLabel %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- Ingredients and Instructions -->
+    <div class="row mx-0">
+        <!-- Ingredients -->
+        <div class="col-lg-6 ingredient-section mt-4">
+            <h3 class="form-text" style="text-align: center; font-size: 190%;">Ingredients</h3>
+            <ul class="list-group">
+                <% scaledIngredients.forEach(i=> { %>
+                    <li class="list-group-item ingredient-item">
+                        <%= i.scaledAmount.toFixed(1) %>
+                        <%= i.unit %> - <%= i.originalName %>
+                    </li>
+                    <% }); %>
+                </ul>
+            </div>
+            <!-- Instructions -->
+            <div class="col-lg-6 instruction-section mt-4">
+                <h3 class="form-text" style="text-align: center; font-size: 190%;">Instructions</h3>
+                <p>
+                    <%- recipe.instructions %>
+                </p>
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="trivia-icon" onclick="toggleTrivia()">
+        <span id="triviaIcon">🍎</span>
+    </div>
+    <div class="trivia-popup" id="triviaPopup">
+        <div class="card-body">
+            Do You Know? <strong><%= trivia %></strong>
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-- Back Buttons -->
+    
+    <div class="container-fluid row mt-4">
+        <div class="col text-center">
+            <a href="javascript:history.back()"><button class="btn-custom mb-4" type="submit">Back to Search</button></a>
+            
+        </div>
+    </div>
+    
+    
+    <!--footer-->
+    <footer id="footer" class="sticky-bottom">
+        <style>
+            
+            footer {
+                padding: 16px;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
+            
+            footer p {
+                margin: 0;
+                font-size: 14px;
+            }
+            
+            footer .social-links {
+                margin-top: 8px;
+            }
+            
+            footer .social-links a {
+                margin: 0 12px;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 18px;
+                transition: color 0.3s ease;
+            }
+            
+            footer .social-links a:hover {
+                color: #f9ac06;
+                /* Highlight color on hover */
+            }
+            
+            footer .social-links i {
+                margin-right: 8px;
+            }
+            
+            footer .email {
+                margin-top: 8px;
+                display: block;
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+            }
+            
+            footer .email:hover {
+                color: #f9ac06;
+                /* Highlight color on hover */
+            }
+        </style>
+        
+        <p>© 2024 NutriChef | All Rights Reserved</p>
+        <div class="social-links">
+            <a href="#" target="_blank">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="#" target="_blank">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+        </div>
+        <a href="mailto:preetham92.official@gmail.com" class="email">
+            <i class="fas fa-envelope"></i>NutriChef🍴
+        </a>
+        
+        
+    </footer>
+    
+    <!-- Include Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function scrollToSearch() {
+            const element = document.getElementById("ingredient-search");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ingredient Hover Effects
+            const ingredientItems = document.querySelectorAll('.ingredient-item');
+            ingredientItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.backgroundColor = '#f0f0f0';
+                    item.style.transform = 'translateX(10px)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.backgroundColor = '#f9f9f9';
+                    item.style.transform = 'translateX(0)';
+                });
+            });
+            
+            
+            
+            // Ingredient List Animation
+            const ingredientObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            ingredientItems.forEach(item => {
+                ingredientObserver.observe(item);
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script>
+       function toggleTrivia() {
+    const triviaPopup = document.getElementById('triviaPopup');
+    const triviaIcon = document.getElementById('triviaIcon');
+
+    // Toggle popup visibility
+    if (triviaPopup.style.display === 'none' || !triviaPopup.style.display) {
+        triviaPopup.style.display = 'block';
+    } else {
+        triviaPopup.style.display = 'none';
+    }
+
+    // Toggle the icon between whole apple and bitten apple
+    triviaIcon.textContent = triviaIcon.textContent === '🍎' ? '🍓' : '🍎';
+}
+function scrollToFooter() {
+            const element = document.getElementById("footer");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    </script>
 </body>
 
 </html>
+
+
+

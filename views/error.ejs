@@ -68,7 +68,7 @@
             width: 100%;
             height: 100vh;
             /* Full viewport height */
-            background-image: url('/images/bg.jpg');
+            background-image: url('https://img.freepik.com/premium-photo/healthy-eating-wallpaper_1134901-236725.jpg?w=1060');
             background-size: cover;
             background-position: center;
         }
@@ -142,6 +142,127 @@
             background-color: #00000000 !important;
             /* Make hamburger icon background white */
         }
+        
+
+        .about-section {
+            padding: 50px 15px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .about-title {
+            font-family: 'Fredoka One', cursive;
+            color: #f9ac06;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .about-content {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #f9ac06;
+            font-weight: bold;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            flex: 1;
+            max-width: 300px;
+            margin: 0 15px;
+            text-align: center;
+        }
+
+        .feature-box i {
+            font-size: 3rem;
+            color: #f9ac06;
+            margin-bottom: 10px;
+        }
+
+        .feature-box h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+    .team-section {
+        background-color: white;
+        padding: 50px 15px;
+        text-align: center;
+    }
+
+    .team-title {
+        font-family: 'Fredoka One', cursive;
+        color: #f9ac06;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+    }
+
+    .team-members {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .team-member {
+        text-align: center;
+        max-width: 300px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .team-member-image {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #f9ac06;
+        transition: transform 0.3s smooth;
+    }
+
+    .team-member-image:hover {
+        transform: rotate(360deg);
+    }
+
+    .team-member-name {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        color: #333;
+        margin-top: 15px;
+    }
+
+    .team-member-role {
+        font-family: 'Chewy', cursive;
+        color: #f9ac06;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .team-member-bio {
+        font-family: 'Lobster', cursive;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .team-members {
+            flex-direction: column;
+        }
+    }
     </style>
     <title>NutriChef🍴</title>
 </head>
@@ -164,7 +285,7 @@
                         <a class="sim-text nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="sim-text nav-link" href="./aboutus.ejs">About</a>
+                        <a class="sim-text nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="sim-text nav-link" href="#" onclick="scrollToFooter()">Contact</a>
@@ -174,88 +295,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-text">Cooking, Made Easy with What You Have</h1>
-            <button class="btn-custom mt-4" onclick="scrollToSearch()">Start Cooking</button>
+    <div class="container">
+        <p class="text-danger mt-4" style="font-size:250%;"> <%= message %> </p>
+        <div class="container-fluid row mt-4">
+            <div class="col text-center">
+                <a href="javascript:history.back()"><button class="btn-custom mb-4" type="submit">Back to Search</button></a>
+                
+            </div>
         </div>
-    </section>
-
-    <!-- Search bar -->
-    <div class="container my-5" id="ingredient-search">
-        <h1 class="slik-text text-center mb-4">Enter Ingredient to Find Recipes</h1>
-
-        <form action="/search-results" method="GET">
-            <div class="mb-3">
-                <h5 class="form-text">Enter Ingredient</h5>
-                <input type="text" class="form-control" id="query" name="query" placeholder="e.g., Paneer" required>
-            </div>
-
-            <div class="mb-3">
-                <h5 class="form-text" style="font-size: large;">Dietary Options</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vegetarian" name="vegetarian" value="true">
-                    <label class="form-check-label" for="vegetarian">Vegetarian (No ingredients may contain meat or meat
-                        by-products, such as bones or gelatin.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vegan" name="vegan" value="true">
-                    <label class="form-check-label" for="vegan">Vegan (No ingredients may contain meat or meat
-                        by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree" value="true">
-                    <label class="form-check-label" for="glutenFree">Gluten-Free (Eliminating gluten means avoiding
-                        wheat, barley, rye, and other gluten-containing grains and foods made from them.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="ketogenic" name="ketogenic" value="true">
-                    <label class="form-check-label" for="ketogenic">Ketogenic (High fat, protein-rich foods are
-                        acceptable, and high carbohydrate foods are not.)</label>
-                </div>
-            </div>
-            <div class="mb-3">
-                <h5 class="form-text" style="font-size: large;">Intolerances Options</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="dairy" name="dairy" value="true">
-                    <label class="form-check-label" for="dairy">Dairy</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="grain" name="grain" value="true">
-                    <label class="form-check-label" for="grain">Grain</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="peanut" name="peanut" value="true">
-                    <label class="form-check-label" for="peanut">Peanut</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="seafood" name="seafood" value="true">
-                    <label class="form-check-label" for="seafood">Seafood</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="soy" name="soy" value="true">
-                    <label class="form-check-label" for="soy">Soy</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="wheat" name="wheat" value="true">
-                    <label class="form-check-label" for="wheat">Wheat</label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-custom">🍴Search</button>
-        </form>
     </div>
+    
+
+    
     <!--footer-->
    <footer id="footer" class="sticky-bottom">
     <style>
        
         footer {
-            padding: 16px;
-            background-color: black;
-            color: white;
-            text-align: center;
+            position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    z-index: 1000;
         }
 
         footer p {

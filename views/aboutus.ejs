@@ -68,7 +68,7 @@
             width: 100%;
             height: 100vh;
             /* Full viewport height */
-            background-image: url('/images/bg.jpg');
+            background-image: url('https://img.freepik.com/premium-photo/healthy-eating-wallpaper_1134901-236725.jpg?w=1060');
             background-size: cover;
             background-position: center;
         }
@@ -142,6 +142,127 @@
             background-color: #00000000 !important;
             /* Make hamburger icon background white */
         }
+        
+
+        .about-section {
+            padding: 50px 15px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .about-title {
+            font-family: 'Fredoka One', cursive;
+            color: #f9ac06;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .about-content {
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #f9ac06;
+            font-weight: bold;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            flex: 1;
+            max-width: 300px;
+            margin: 0 15px;
+            text-align: center;
+        }
+
+        .feature-box i {
+            font-size: 3rem;
+            color: #f9ac06;
+            margin-bottom: 10px;
+        }
+
+        .feature-box h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+    .team-section {
+        background-color: white;
+        padding: 50px 15px;
+        text-align: center;
+    }
+
+    .team-title {
+        font-family: 'Fredoka One', cursive;
+        color: #f9ac06;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+    }
+
+    .team-members {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .team-member {
+        text-align: center;
+        max-width: 300px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-member:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .team-member-image {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #f9ac06;
+        transition: transform 0.3s smooth;
+    }
+
+    .team-member-image:hover {
+        transform: rotate(360deg);
+    }
+
+    .team-member-name {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        color: #333;
+        margin-top: 15px;
+    }
+
+    .team-member-role {
+        font-family: 'Chewy', cursive;
+        color: #f9ac06;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .team-member-bio {
+        font-family: 'Lobster', cursive;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .team-members {
+            flex-direction: column;
+        }
+    }
     </style>
     <title>NutriChef🍴</title>
 </head>
@@ -164,7 +285,7 @@
                         <a class="sim-text nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="sim-text nav-link" href="./aboutus.ejs">About</a>
+                        <a class="sim-text nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="sim-text nav-link" href="#" onclick="scrollToFooter()">Contact</a>
@@ -174,79 +295,71 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-text">Cooking, Made Easy with What You Have</h1>
-            <button class="btn-custom mt-4" onclick="scrollToSearch()">Start Cooking</button>
+    <!-- About Us Section -->
+    <div class="about-section" style="background-color: white;">
+        <h2 class="about-title">Who We Are</h2>
+        <div class="about-content">
+            <p>
+                At <span class="highlight">NutriChef</span>, we believe food is more than just sustenance—it’s a journey. We’re here to make your
+                culinary adventures not only delicious but also nutritious! With our intuitive ingredient search, discover dishes
+                you love while gaining insight into their nutritional benefits and fun trivia.
+            </p>
+            <p>
+                Whether you're a seasoned chef or just starting out, <span class="highlight">NutriChef</span> is your partner in
+                creating meals that nourish both your body and soul.
+            </p>
         </div>
-    </section>
 
-    <!-- Search bar -->
-    <div class="container my-5" id="ingredient-search">
-        <h1 class="slik-text text-center mb-4">Enter Ingredient to Find Recipes</h1>
-
-        <form action="/search-results" method="GET">
-            <div class="mb-3">
-                <h5 class="form-text">Enter Ingredient</h5>
-                <input type="text" class="form-control" id="query" name="query" placeholder="e.g., Paneer" required>
+        <!-- Features Section -->
+        <div class="features">
+            <div class="feature-box">
+                <i class="fas fa-utensils"></i>
+                <h4>Ingredient-Based Recipes</h4>
+                <p>Find dishes that match your available ingredients and explore new flavors effortlessly.</p>
             </div>
-
-            <div class="mb-3">
-                <h5 class="form-text" style="font-size: large;">Dietary Options</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vegetarian" name="vegetarian" value="true">
-                    <label class="form-check-label" for="vegetarian">Vegetarian (No ingredients may contain meat or meat
-                        by-products, such as bones or gelatin.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="vegan" name="vegan" value="true">
-                    <label class="form-check-label" for="vegan">Vegan (No ingredients may contain meat or meat
-                        by-products, such as bones or gelatin, nor may they contain eggs, dairy, or honey.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="glutenFree" name="glutenFree" value="true">
-                    <label class="form-check-label" for="glutenFree">Gluten-Free (Eliminating gluten means avoiding
-                        wheat, barley, rye, and other gluten-containing grains and foods made from them.)</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="ketogenic" name="ketogenic" value="true">
-                    <label class="form-check-label" for="ketogenic">Ketogenic (High fat, protein-rich foods are
-                        acceptable, and high carbohydrate foods are not.)</label>
-                </div>
+            <div class="feature-box">
+                <i class="fas fa-chart-pie"></i>
+                <h4>Nutrition Insights</h4>
+                <p>Understand the nutritional value of every dish to make informed, healthy choices.</p>
             </div>
-            <div class="mb-3">
-                <h5 class="form-text" style="font-size: large;">Intolerances Options</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="dairy" name="dairy" value="true">
-                    <label class="form-check-label" for="dairy">Dairy</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="grain" name="grain" value="true">
-                    <label class="form-check-label" for="grain">Grain</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="peanut" name="peanut" value="true">
-                    <label class="form-check-label" for="peanut">Peanut</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="seafood" name="seafood" value="true">
-                    <label class="form-check-label" for="seafood">Seafood</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="soy" name="soy" value="true">
-                    <label class="form-check-label" for="soy">Soy</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="wheat" name="wheat" value="true">
-                    <label class="form-check-label" for="wheat">Wheat</label>
-                </div>
+            <div class="feature-box">
+                <i class="fas fa-lightbulb"></i>
+                <h4>Food Trivia</h4>
+                <p>Learn fun facts and stories about the dishes and ingredients you love.</p>
             </div>
-
-            <button type="submit" class="btn btn-custom">🍴Search</button>
-        </form>
+        </div>
     </div>
+    <div class="team-section">
+        <h2 class="team-title">Our Amazing Team</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="/images/rohit.png" alt="Team Member 1" class="team-member-image">
+                <h3 class="team-member-name">Rohit Kumar Singh</h3>
+                <h4 class="team-member-role">Integration & API Strategist</h4>
+                <p class="team-member-bio">
+                    Orchestrates the connectivity and functionality of digital ecosystems, bridging the gap between front-end and back-end systems with precision and innovation. Designs and implements efficient API solutions, enabling smooth communication between systems and ensuring seamless integration with third-party services.
+                </p>
+            </div>
+            <div class="team-member">
+                <img src="/images/jm.jpg" alt="Team Member 2" class="team-member-image">
+                <h3 class="team-member-name">S Preetham</h3>
+                <h4 class="team-member-role">UI/UX Specialist</h4>
+                <p class="team-member-bio">
+                    A strategic thinker who crafts seamless and engaging experiences, ensuring users connect effortlessly with the product, designs and optimizes user interfaces and experiences to ensure intuitive, user-centered interactions. Bridges the gap between user needs and technical implementation.
+                </p>
+            </div>
+            <div class="team-member">
+                <img src="/images/shivam.png" alt="Team Member 3" class="team-member-image">
+                <h3 class="team-member-name">Shivam Kumar Singh</h3>
+                <h4 class="team-member-role">Backend Systems Specialist</h4>
+                <p class="team-member-bio">
+                    An innovator in server-side technologies, ensuring seamless data flow and reliable application performance through efficient backend architecture and maintain robust, scalable, and secure backend systems that power the functionality and performance of the product.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
     <!--footer-->
    <footer id="footer" class="sticky-bottom">
     <style>
