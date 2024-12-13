@@ -334,7 +334,7 @@
         </div>
         
         <% if (recipes && recipes.length> 0) { %>
-            <h2 class="form-text mt-4">Search Results for <%= query %>:</h2>
+            <h2 class="form-text mt-4 mb-4">Search Results for <%= query %>:</h2>
             <div class="row">
                 <% recipes.forEach(recipe=> { %>
                     <div class="col-md-4 mb-4">
@@ -357,129 +357,126 @@
                     </div>
                     <div>
                         <% } else if (recipes) { %>
-                            <p class="text-danger mt-4" style="font-size:250%;">No recipes found for your search. Please try again!</p>
-                            <div class="container-fluid" style="margin-bottom: 5;">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+                            <div class="container">
+                                <p class="text-danger mt-4" style="font-size:250%;">No recipes found for your search. Please try again!</p>
                             </div>
-                            
                             <% } %>
                         </div>
                         
                     </div>
-                    <!-- Back to Top Button -->
-                    <button id="backToTop" title="Go to top">
-                        <img src="https://em-content.zobj.net/source/microsoft/319/up-arrow_2b06-fe0f.png" alt="Back to Top" id="backToTopIcon" />
-                    </button>
                     
-                    <!--footer-->
-                    <footer id="footer" class="sticky-bottom">
-                        <style>
-                            
-                            footer {
-                                position: fixed;
-                                left: 0;
-                                bottom: 0;
-                                width: 100%;
-                                padding: 16px;
-                                background-color: black;
-                                color: white;
-                                text-align: center;
-                                z-index: 1000; /* Ensures the footer is above other content */
-                            }
-                            
-                            footer p {
-                                margin: 0;
-                                font-size: 14px;
-                            }
-                            
-                            footer .social-links {
-                                margin-top: 8px;
-                            }
-                            
-                            footer .social-links a {
-                                margin: 0 12px;
-                                color: white;
-                                text-decoration: none;
-                                font-weight: bold;
-                                font-size: 18px;
-                                transition: color 0.3s ease;
-                            }
-                            
-                            footer .social-links a:hover {
-                                color: #f9ac06;
-                                /* Highlight color on hover */
-                            }
-                            
-                            footer .social-links i {
-                                margin-right: 8px;
-                            }
-                            
-                            footer .email {
-                                margin-top: 8px;
-                                display: block;
-                                color: white;
-                                text-decoration: none;
-                                font-size: 14px;
-                            }
-                            
-                            footer .email:hover {
-                                color: #f9ac06;
-                                /* Highlight color on hover */
-                            }
-                        </style>
-                        
-                        <p>© 2024 NutriChef | All Rights Reserved</p>
-                        <div class="social-links">
-                            <a href="#" target="_blank">
-                                <i class="fab fa-facebook"></i> Facebook
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fab fa-instagram"></i> Instagram
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fab fa-twitter"></i> Twitter
-                            </a>
-                        </div>
-                        <a href="mailto:preetham92.official@gmail.com" class="email">
-                            <i class="fas fa-envelope"></i>NutriChef🍴
-                        </a>
-                        
-                        
-                    </footer>
-                    <script>
-                        // Show the button when the user scrolls down
-                        window.onscroll = function () {
-                            const backToTopButton = document.getElementById("backToTop");
-                            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                                backToTopButton.style.display = "block";
-                            } else {
-                                backToTopButton.style.display = "none";
-                            }
-                        };
-                        
-                        // Scroll to the top of the page when the button is clicked
-                        document.getElementById("backToTop").onclick = function () {
-                            window.scrollTo({
-                                top: 0,
-                                behavior: "smooth",
-                            });
-                        };
-                        function scrollToFooter() {
-                            const element = document.getElementById("footer");
-                            if (element) {
-                                element.scrollIntoView({ behavior: "smooth" });
-                            }
-                        }
-                    </script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                    crossorigin="anonymous"></script>
-                </body>
+                    
+                </div>
                 
-                </html>
+            </div>
+            <!-- Back to Top Button -->
+            <button id="backToTop" title="Go to top">
+                <img src="https://em-content.zobj.net/source/microsoft/319/up-arrow_2b06-fe0f.png" alt="Back to Top" id="backToTopIcon" />
+            </button>
+            
+            <!--footer-->
+            <footer id="footer" class="sticky-bottom">
+                <style>
+                    
+                    footer {
+                        
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        padding: 16px;
+                        background-color: black;
+                        color: white;
+                        text-align: center;
+                        z-index: 1000;
+                    }
+                    
+                    footer p {
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                    
+                    footer .social-links {
+                        margin-top: 8px;
+                    }
+                    
+                    footer .social-links a {
+                        margin: 0 12px;
+                        color: white;
+                        text-decoration: none;
+                        font-weight: bold;
+                        font-size: 18px;
+                        transition: color 0.3s ease;
+                    }
+                    
+                    footer .social-links a:hover {
+                        color: #f9ac06;
+                        /* Highlight color on hover */
+                    }
+                    
+                    footer .social-links i {
+                        margin-right: 8px;
+                    }
+                    
+                    footer .email {
+                        margin-top: 8px;
+                        display: block;
+                        color: white;
+                        text-decoration: none;
+                        font-size: 14px;
+                    }
+                    
+                    footer .email:hover {
+                        color: #f9ac06;
+                        /* Highlight color on hover */
+                    }
+                </style>
+                
+                <p>© 2024 NutriChef | All Rights Reserved</p>
+                <div class="social-links">
+                    <a href="#" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </div>
+                <a href="mailto:preetham92.official@gmail.com" class="email">
+                    <i class="fas fa-envelope"></i>NutriChef🍴
+                </a>
+                
+                
+            </footer>
+            <script>
+                // Show the button when the user scrolls down
+                window.onscroll = function () {
+                    const backToTopButton = document.getElementById("backToTop");
+                    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                        backToTopButton.style.display = "block";
+                    } else {
+                        backToTopButton.style.display = "none";
+                    }
+                };
+                
+                // Scroll to the top of the page when the button is clicked
+                document.getElementById("backToTop").onclick = function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                    });
+                };
+                function scrollToFooter() {
+                    const element = document.getElementById("footer");
+                    if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }
+                }
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        </body>
+        
+        </html>

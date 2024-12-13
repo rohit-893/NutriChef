@@ -42,12 +42,18 @@ app.get("/search-results", async (req, res) => {
 
         const recipeDetails = await axios.get(apiUrl);
 
-        let defaultServings = 4;
-        res.render("search", { recipes: recipeDetails.data.results, defaultServings, query });
+        // Check if no recipes are found
+        if (recipeDetails.data.results.length === 0) {
+            // Render the error page if no recipes found
+            res.render("error", { message: "No recipes found for your search. Please try again!" });
+        } else {
+            let defaultServings = 4;
+            res.render("search", { recipes: recipeDetails.data.results, defaultServings, query });
+        }
 
     } catch (error) {
         console.error(error.message);
-        res.render("search", { recipes: [], defaultServings }); // Render with no results in case of error
+        res.render("error", { message: "Error retrieving recipes. Please try again later." }); // Render error if API call fails
     }
 });
 
@@ -72,7 +78,7 @@ app.get("/recipe/:id", async (req, res) => {
 
     try {
         // Fetch recipe details and nutrition label in parallel
-        const [recipeDetails, nutritionLabel, trivia] = await Promise.all([
+        const [recipeDetails, nutritionLabel, trivia] = await Promise.all([ 
             axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`),
             axios.get(`https://api.spoonacular.com/recipes/${recipeId}/nutritionLabel?apiKey=${API_KEY}`),
             axios.get(`https://api.spoonacular.com/food/trivia/random?apiKey=${API_KEY}`)
@@ -120,9 +126,10 @@ function adjustIngredients(recipe, servings) {
     });
 }
 
-app.get("/about",(req,res)=>{
-    res.render("aboutus")
-})
+// About Us Route
+app.get("/aboutus.ejs", (req, res) => {
+    res.render("aboutus");
+});
 
 // Server Setup
 const PORT = process.env.PORT || 3000;

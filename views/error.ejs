@@ -295,69 +295,16 @@
         </div>
     </nav>
 
-    <!-- About Us Section -->
-    <div class="about-section" style="background-color: white;">
-        <h2 class="about-title">Who We Are</h2>
-        <div class="about-content">
-            <p>
-                At <span class="highlight">NutriChef</span>, we believe food is more than just sustenance—it’s a journey. We’re here to make your
-                culinary adventures not only delicious but also nutritious! With our intuitive ingredient search, discover dishes
-                you love while gaining insight into their nutritional benefits and fun trivia.
-            </p>
-            <p>
-                Whether you're a seasoned chef or just starting out, <span class="highlight">NutriChef</span> is your partner in
-                creating meals that nourish both your body and soul.
-            </p>
-        </div>
-
-        <!-- Features Section -->
-        <div class="features">
-            <div class="feature-box">
-                <i class="fas fa-utensils"></i>
-                <h4>Ingredient-Based Recipes</h4>
-                <p>Find dishes that match your available ingredients and explore new flavors effortlessly.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-chart-pie"></i>
-                <h4>Nutrition Insights</h4>
-                <p>Understand the nutritional value of every dish to make informed, healthy choices.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-lightbulb"></i>
-                <h4>Food Trivia</h4>
-                <p>Learn fun facts and stories about the dishes and ingredients you love.</p>
+    <div class="container">
+        <p class="text-danger mt-4" style="font-size:250%;"> <%= message %> </p>
+        <div class="container-fluid row mt-4">
+            <div class="col text-center">
+                <a href="javascript:history.back()"><button class="btn-custom mb-4" type="submit">Back to Search</button></a>
+                
             </div>
         </div>
     </div>
-    <div class="team-section">
-        <h2 class="team-title">Our Amazing Team</h2>
-        <div class="team-members">
-            <div class="team-member">
-                <img src="/images/rohit.png" alt="Team Member 1" class="team-member-image">
-                <h3 class="team-member-name">Rohit Kumar Singh</h3>
-                <h4 class="team-member-role">Integration & API Strategist</h4>
-                <p class="team-member-bio">
-                    Orchestrates the connectivity and functionality of digital ecosystems, bridging the gap between front-end and back-end systems with precision and innovation. Designs and implements efficient API solutions, enabling smooth communication between systems and ensuring seamless integration with third-party services.
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="/images/jm.jpg" alt="Team Member 2" class="team-member-image">
-                <h3 class="team-member-name">S Preetham</h3>
-                <h4 class="team-member-role">UI/UX Specialist</h4>
-                <p class="team-member-bio">
-                    A strategic thinker who crafts seamless and engaging experiences, ensuring users connect effortlessly with the product, designs and optimizes user interfaces and experiences to ensure intuitive, user-centered interactions. Bridges the gap between user needs and technical implementation.
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="/images/shivam.png" alt="Team Member 3" class="team-member-image">
-                <h3 class="team-member-name">Shivam Kumar Singh</h3>
-                <h4 class="team-member-role">Backend Systems Specialist</h4>
-                <p class="team-member-bio">
-                    An innovator in server-side technologies, ensuring seamless data flow and reliable application performance through efficient backend architecture and maintain robust, scalable, and secure backend systems that power the functionality and performance of the product.
-                </p>
-            </div>
-        </div>
-    </div>
+    
 
     
     <!--footer-->
@@ -365,10 +312,15 @@
     <style>
        
         footer {
-            padding: 16px;
-            background-color: black;
-            color: white;
-            text-align: center;
+            position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    z-index: 1000;
         }
 
         footer p {
