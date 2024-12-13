@@ -127,7 +127,7 @@ function adjustIngredients(recipe, servings) {
 }
 
 // About Us Route
-app.get("/aboutus.ejs", (req, res) => {
+app.get("/about", (req, res) => {
     res.render("aboutus");
 });
 
