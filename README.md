@@ -1,7 +1,3 @@
-Here’s a comprehensive README file for your GitHub repository, including the deployment link:
-
----
-
 # NutriChef - Recipe Search and Recommendation Web Application
 
 [![Deployment](https://img.shields.io/badge/Deployed-Live-blue)](https://nutrichef.onrender.com)
@@ -65,17 +61,11 @@ Check out the live app: [NutriChef on Render](https://nutrichef.onrender.com)
    ```bash
    npm install
    ```
-3. Set up environment variables:
-   - Create a `.env` file in the root directory.
-   - Add your Spoonacular API key:
-     ```
-     API_KEY=your_spoonacular_api_key
-     ```
-4. Run the application:
+3. Run the application:
    ```bash
    npm start
    ```
-5. Open the app in your browser:
+4. Open the app in your browser:
    ```
    http://localhost:3000
    ```
@@ -97,18 +87,12 @@ Contributions are welcome!
 
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## 👥 Team
 
 This project was developed collaboratively by:
-- **[Your Name](https://www.linkedin.com/in/yourprofile)**  
-- **[Friend 1's Name](https://www.linkedin.com/in/friend1profile)**  
-- **[Friend 2's Name](https://www.linkedin.com/in/friend2profile)**  
+- **[Rohit Kumar](https://www.linkedin.com/in/rohit-kumar-260917258/)**  
+- **[Shivam Kumar Singh](https://www.linkedin.com/in/shivamkr1911/)**  
+- **[S Preetham](https://www.linkedin.com/in/s-preeetham29/)**  
 
 Feel free to connect and share your feedback with us!
 
