@@ -54,7 +54,7 @@ Check out the live app: [NutriChef on Render](https://nutrichef.onrender.com)
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/nutrichef.git
+   git clone -b nutrition-label https://github.com/rohit-893/NutriChef.git
    cd nutrichef
    ```
 2. Install dependencies:
