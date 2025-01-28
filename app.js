@@ -1,9 +1,13 @@
+if (process.env.MODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require("express");
 const axios = require("axios");
 const app = express();
 const path = require("path");
 
-const API_KEY = "API Key"; // Replace with your actual Spoonacular API key
+const API_KEY = process.env.SPOONACULAR_API; // You can replace with your actual Spoonacular API key
 
 // Simple in-memory cache (this can be further improved with a library like Redis for production)
 const cache = {};
